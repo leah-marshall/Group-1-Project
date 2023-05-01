@@ -49,9 +49,17 @@ public class ballcontroller : MonoBehaviour
             bounce = 0;
         }
         Debug.Log("forward: " + forwardMotion + "horizontal: " + horizontalMotion + "bounce: " + bounce);
-        playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
-        + (playerSphere.right * horizontalMotion * MoveSpeed)
-        + (Vector3.down * bounce * BounceSpeed));
+        Debug.Log(playerBody.velocity.magnitude);
+        if (playerBody.velocity.magnitude == 0)
+        {
+            playerBody.AddForce(Vector3.up * bounce * 1000);
+        }
+        else
+        {
+            playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
+            + (playerSphere.right * horizontalMotion * MoveSpeed)
+            + (Vector3.down * bounce * BounceSpeed));
+        }
     }
 
     void camControl()
