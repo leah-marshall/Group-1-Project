@@ -7,7 +7,9 @@ public class ballcontroller : MonoBehaviour
 {
     private Transform playerSphere; // stores player sphere object
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
+    public Material red, blue;
     private Transform TPCam; // stores player camera
+    public Vector3 downDirection; // changes depending on gravity
     public Image spacebar;
     private float currentX; // stores starting x position of the mouse, then tracks current position via change in x position
     public float sensitivity; // public so can be accessed by roll script
@@ -21,6 +23,7 @@ public class ballcontroller : MonoBehaviour
         playerSphere = gameObject.GetComponent<Transform>();
         playerBody = playerSphere.GetComponent<Rigidbody>();
         TPCam = GameObject.Find("Camera").GetComponent<Transform>();
+        downDirection = Vector3.down;
         currentX = Input.mousePosition.x;
         Cursor.lockState = CursorLockMode.Locked; // locks mouse to centre of screen
     }
@@ -37,7 +40,6 @@ public class ballcontroller : MonoBehaviour
 
     
     void move() {
-        
         float forwardMotion = Input.GetAxis("Vertical");
         float horizontalMotion = Input.GetAxis("Horizontal");
         float bounce = 0;
@@ -48,9 +50,7 @@ public class ballcontroller : MonoBehaviour
             spacebar.enabled = false;
             bounce = 0;
         }
-        Debug.Log("forward: " + forwardMotion + "horizontal: " + horizontalMotion + "bounce: " + bounce);
-        Debug.Log(playerBody.velocity.magnitude);
-        if (playerBody.velocity.magnitude == 0)
+        if (playerBody.velocity.magnitude <= 0.01f)
         {
             playerBody.AddForce(Vector3.up * bounce * 1000);
         }
@@ -58,7 +58,7 @@ public class ballcontroller : MonoBehaviour
         {
             playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
             + (playerSphere.right * horizontalMotion * MoveSpeed)
-            + (Vector3.down * bounce * BounceSpeed));
+            + (downDirection * bounce * BounceSpeed));
         }
     }
 
