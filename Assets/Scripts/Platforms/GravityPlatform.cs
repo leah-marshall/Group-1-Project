@@ -32,12 +32,14 @@ public class GravityPlatform : MonoBehaviour
         if (other.name == "Player")
         {
             playerMat.material = playerController.red;
-            Quaternion onPlatformRotation = Quaternion.identity;
-            onPlatformRotation.eulerAngles = new Vector3(90.0f, 0, 90.0f);
-            player.rotation = onPlatformRotation;
             Physics.gravity = new Vector3(0, 0, 0);
-            playerBody.velocity = new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z);
+            float yToZero = playerBody.velocity.y;
+            while (yToZero > 0.0f){
+                playerBody.velocity = new Vector3(playerBody.velocity.x, yToZero, playerBody.velocity.z);
+                yToZero -= 15.0f;
+            }
             playerController.downDirection = -gameObject.transform.up;
+            playerController.onGravityPlatform = true;
             inGravityArea = true;
         }
     }
@@ -48,7 +50,8 @@ public class GravityPlatform : MonoBehaviour
         {
             playerMat.material = playerController.blue;
             playerController.downDirection = Vector3.down;
-            Physics.gravity = new Vector3(0, -9.81f, 0);
+            Physics.gravity = new Vector3(0, -12f, 0);
+            playerController.onGravityPlatform = false;
             inGravityArea = false;
         }
     }

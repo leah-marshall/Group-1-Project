@@ -9,10 +9,12 @@ public class ballcontroller : MonoBehaviour
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
     public Material red, blue;
     private Transform TPCam; // stores player camera
-    public Vector3 downDirection; // changes depending on gravity
+    [HideInInspector] public bool onGravityPlatform;
+    [HideInInspector] public Vector3 downDirection; // changes depending on gravity
     public Image spacebar;
     private float currentX; // stores starting x position of the mouse, then tracks current position via change in x position
     public float sensitivity; // public so can be accessed by roll script
+    [SerializeField] private float MaxSpeed;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float BounceSpeed;
 
@@ -23,6 +25,7 @@ public class ballcontroller : MonoBehaviour
         playerSphere = gameObject.GetComponent<Transform>();
         playerBody = playerSphere.GetComponent<Rigidbody>();
         TPCam = GameObject.Find("Camera").GetComponent<Transform>();
+        onGravityPlatform = false;
         downDirection = Vector3.down;
         currentX = Input.mousePosition.x;
         Cursor.lockState = CursorLockMode.Locked; // locks mouse to centre of screen
@@ -40,8 +43,8 @@ public class ballcontroller : MonoBehaviour
 
     
     void move() {
-        float forwardMotion = Input.GetAxis("Vertical");
-        float horizontalMotion = Input.GetAxis("Horizontal");
+        float forwardMotion = Input.GetAxisRaw("Vertical");
+        float horizontalMotion = Input.GetAxisRaw("Horizontal");
         float bounce = 0;
         if (Input.GetKey("space")){
             spacebar.enabled = true;
@@ -50,12 +53,29 @@ public class ballcontroller : MonoBehaviour
             spacebar.enabled = false;
             bounce = 0;
         }
-        if (playerBody.velocity.magnitude <= 0.01f)
+        if (!onGravityPlatform){
+            Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
+            if (Mathf.Abs(playerBody.velocity.x) > MaxSpeed){
+                localVelocity.x = MaxSpeed * horizontalMotion;
+            }
+            if (Mathf.Abs(playerBody.velocity.z) > MaxSpeed){
+                localVelocity.z = MaxSpeed * forwardMotion;
+            }
+            playerBody.velocity = transform.TransformDirection(localVelocity);
+        }
+        
+        if (playerBody.velocity.magnitude <= 0.0001f)
         {
-            playerBody.AddForce(Vector3.up * bounce * 1000);
+            playerBody.AddForce(-downDirection * bounce * 1250);
         }
         else
         {
+            Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+            if (forwardMotion == 0){
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, 0.35f); 
+            } else if (horizontalMotion == 0){
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, 0.35f); // reference ends here
+            }
             playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
             + (playerSphere.right * horizontalMotion * MoveSpeed)
             + (downDirection * bounce * BounceSpeed));
@@ -64,6 +84,12 @@ public class ballcontroller : MonoBehaviour
 
     void camControl()
     {
+        if (playerBody.velocity.magnitude >= 5.0f){
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60 + playerBody.velocity.magnitude * 1.15f, 0.2f);
+        } else {
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60, 0.2f);
+        }
+        TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 60, 90);
         Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
         // Thread Reference Begins Here
         float deltaX = Input.GetAxis("Mouse X");
