@@ -7,8 +7,10 @@ public class ballcontroller : MonoBehaviour
 {
     private Transform playerSphere; // stores player sphere object
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
-    public Material red, blue;
+    public Material red, blue, peak;
     private Transform TPCam; // stores player camera
+    private bool grounded;
+    [SerializeField] private float groundedDist;
     [HideInInspector] public bool onGravityPlatform;
     [HideInInspector] public Vector3 downDirection; // changes depending on gravity
     public Image spacebar;
@@ -17,6 +19,8 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] private float MaxSpeed;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float BounceSpeed;
+    [SerializeField] private float BounceHeightLimit;
+    [SerializeField] private float StopTime;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,8 @@ public class ballcontroller : MonoBehaviour
     }
 
     void Update(){
+        groundCheck();
+        highlightPeak();
         camControl();
     }
 
@@ -53,38 +59,68 @@ public class ballcontroller : MonoBehaviour
             spacebar.enabled = false;
             bounce = 0;
         }
-        if (!onGravityPlatform){
             Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
-            if (Mathf.Abs(playerBody.velocity.x) > MaxSpeed){
-                localVelocity.x = MaxSpeed * horizontalMotion;
-            }
-            if (Mathf.Abs(playerBody.velocity.z) > MaxSpeed){
-                localVelocity.z = MaxSpeed * forwardMotion;
+                localVelocity.x = Mathf.Clamp(localVelocity.x, -MaxSpeed, MaxSpeed);
+                localVelocity.z = Mathf.Clamp(localVelocity.z, -MaxSpeed, MaxSpeed);
+            if (playerBody.velocity.y < -MaxSpeed*BounceHeightLimit){ // bounceheight limit
+                localVelocity.y = -MaxSpeed*BounceHeightLimit;
+               // Debug.Log("downward capped");
             }
             playerBody.velocity = transform.TransformDirection(localVelocity);
-        }
+     
         
-        if (playerBody.velocity.magnitude <= 0.0001f)
+        if (grounded)
         {
-            playerBody.AddForce(-downDirection * bounce * 1250);
+            playerBody.AddForce(-downDirection * bounce * BounceSpeed * 1.5f);
         }
         else
         {
-            Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+          Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
             if (forwardMotion == 0){
-                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, 0.35f); 
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, StopTime); 
             } else if (horizontalMotion == 0){
-                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, 0.35f); // reference ends here
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
             }
             playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
-            + (playerSphere.right * horizontalMotion * MoveSpeed)
-            + (downDirection * bounce * BounceSpeed));
+            + (playerSphere.right * horizontalMotion * MoveSpeed));
+            if (!grounded){
+                playerBody.AddForce(downDirection * bounce * BounceSpeed);
+            }
         }
+    }
+
+    void highlightPeak(){
+        if (!grounded && !onGravityPlatform && playerBody.velocity.y < 3f){
+            playerSphere.GetComponent<Renderer>().material = peak;
+        } else if (!onGravityPlatform){
+            playerSphere.GetComponent<Renderer>().material = blue;
+        }
+    }
+
+    void groundCheck(){ // looked at previous script
+        LayerMask groundMask = LayerMask.GetMask("Ground"); // referenced layer masking doc for optimization https://docs.unity3d.com/ScriptReference/LayerMask.html
+        // Practical Reference Begins Here
+        Ray groundCheck = new Ray(playerSphere.position, downDirection); // referenced practical 5-2, changed from Camera.main.ViewportPointToRay because ray relative to player not camera (ask how to reference practicals)
+        RaycastHit hitInfo; // as in practical
+        // as in practical + Unity Doc for layer masking, only check objects within groundedDist and on ground layer
+        // referenced for 1 line raycast if statement https://forum.unity.com/threads/solved-checking-if-raycasthit-null-not-working.370595/#:~:text=RaycastHit%20is%20a%20struct%2C%20structs,RaycastHit%20info%20has%20been%20set.
+        // author lordofduct
+        // Thread Reference Begins Here
+        if (Physics.Raycast(groundCheck, out hitInfo, groundedDist, groundMask)) // check if object on ground layer was hit to see if player is touching ground
+        {
+        // Thread Reference Ends Here
+            grounded = true;
+        } 
+        else
+        {
+            grounded = false;
+        }
+        // Practical Reference Ends Here
     }
 
     void camControl()
     {
-        if (playerBody.velocity.magnitude >= 5.0f){
+        if (playerBody.velocity.magnitude >= 5.0f && !grounded){
             TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60 + playerBody.velocity.magnitude * 1.15f, 0.2f);
         } else {
             TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60, 0.2f);

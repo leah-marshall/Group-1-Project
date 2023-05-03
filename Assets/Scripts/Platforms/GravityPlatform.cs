@@ -36,7 +36,7 @@ public class GravityPlatform : MonoBehaviour
             float yToZero = playerBody.velocity.y;
             while (yToZero > 0.0f){
                 playerBody.velocity = new Vector3(playerBody.velocity.x, yToZero, playerBody.velocity.z);
-                yToZero -= 15.0f;
+                yToZero -= 20.0f;
             }
             playerController.downDirection = -gameObject.transform.up;
             playerController.onGravityPlatform = true;
