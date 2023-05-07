@@ -10,6 +10,7 @@ public class ballcontroller : MonoBehaviour
     public Material red, blue, peak;
     private Transform TPCam; // stores player camera
     private bool grounded;
+    public bool isDiving;
     [SerializeField] private float groundedDist;
     [HideInInspector] public bool onGravityPlatform;
     [HideInInspector] public Vector3 downDirection; // changes depending on gravity
@@ -38,6 +39,7 @@ public class ballcontroller : MonoBehaviour
         bounceCollider = gameObject.GetComponent<Collider>();
         startHeight = playerBody.position.y;
         maxHeight = 0;
+        isDiving = false;
     }
 
     void Update(){ 
@@ -69,9 +71,11 @@ public class ballcontroller : MonoBehaviour
             startHeight = playerBody.position.y;
         }
             heightGain = maxHeight - startHeight;
+        /*
             Debug.Log("start height: " + startHeight);
             Debug.Log("max height: " + maxHeight);
             Debug.Log("height gain: " + heightGain);
+        */
     }
 
     
@@ -82,6 +86,7 @@ public class ballcontroller : MonoBehaviour
         if (Input.GetKey("space")){
             spacebar.enabled = true;
             bounce = 1;
+            isDiving = true;
         } else {
             spacebar.enabled = false;
             bounce = 0;
@@ -149,5 +154,10 @@ public class ballcontroller : MonoBehaviour
         currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
         camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
         playerSphere.rotation = camYaw; // rotate camera
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        isDiving = false;
     }
 }
