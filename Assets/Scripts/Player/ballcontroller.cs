@@ -14,7 +14,7 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] private float groundedDist;
     [HideInInspector] public bool onGravityPlatform;
     [HideInInspector] public Vector3 downDirection; // changes depending on gravity
-    public Image spacebar;
+    // public Image spacebar;
     private float currentX; // stores starting x position of the mouse, then tracks current position via change in x position
     public float sensitivity; // public so can be accessed by roll script
     [SerializeField] private float MaxSpeed;
@@ -28,7 +28,7 @@ public class ballcontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spacebar.enabled = false;
+        // spacebar.enabled = false;
         playerSphere = gameObject.GetComponent<Transform>();
         playerBody = playerSphere.GetComponent<Rigidbody>();
         TPCam = GameObject.Find("Camera").GetComponent<Transform>();
@@ -80,15 +80,16 @@ public class ballcontroller : MonoBehaviour
 
     
     void move() {
+        brake();
         float forwardMotion = Input.GetAxisRaw("Vertical");
         float horizontalMotion = Input.GetAxisRaw("Horizontal");
         float bounce = 0;
         if (Input.GetKey("space")){
-            spacebar.enabled = true;
+         //   spacebar.enabled = true;
             bounce = 1;
             isDiving = true;
         } else {
-            spacebar.enabled = false;
+        //    spacebar.enabled = false;
             bounce = 0;
         }
             Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
@@ -106,6 +107,14 @@ public class ballcontroller : MonoBehaviour
             playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
             + (playerSphere.right * horizontalMotion * MoveSpeed)
             + (downDirection * bounce * BounceSpeed));
+    }
+
+    void brake(){
+        Vector3 velocityRef = Vector3.zero;
+        if (Input.GetKey("left shift")){
+            Debug.Log("braking");
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, 0), ref velocityRef, StopTime/3); 
+        }
     }
 
     void highlightPeak(){
@@ -140,9 +149,9 @@ public class ballcontroller : MonoBehaviour
     void camControl()
     {
         if (playerBody.velocity.magnitude >= 20.0f){
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60 + playerBody.velocity.magnitude * 1.15f, 0.05f);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60 + playerBody.velocity.magnitude * 1.15f, 0.1f);
         } else {
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60, 0.1f);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60, 0.05f);
         }
         TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 60, 90);
         Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
