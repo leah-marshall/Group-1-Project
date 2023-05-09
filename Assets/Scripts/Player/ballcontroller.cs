@@ -14,6 +14,8 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float BounceSpeed;
 
+     [SerializeField] Material mat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +46,11 @@ public class ballcontroller : MonoBehaviour
         if (Input.GetKey("space")){
             spacebar.enabled = true;
             bounce = 1;
+            mat.SetFloat("_Index", 2f);
         } else {
             spacebar.enabled = false;
             bounce = 0;
+            mat.SetFloat("_Index", 0f);
         }
         Debug.Log("forward: " + forwardMotion + "horizontal: " + horizontalMotion + "bounce: " + bounce);
         Debug.Log(playerBody.velocity.magnitude);
