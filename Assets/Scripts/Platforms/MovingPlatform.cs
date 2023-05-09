@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public GameObject[] points;
-    public float speed = 2f;
+    [SerializeField] private float speed = 2f;
     int current_destination = 0;
 
 
@@ -20,15 +20,16 @@ public class MovingPlatform : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, points[current_destination].transform.position) < 0.5f)
         {
-            if (current_destination < points.Length - 1)
-            {
-                current_destination++;
-            }
-            else
-            {
-                current_destination = 0;
-            }
+                if (current_destination < points.Length - 1)
+                {
+                    current_destination++;
+                }
+                else
+                {
+                    current_destination = 0;
+                }   
         }
+        
         transform.position = Vector3.MoveTowards(transform.position, points[current_destination].transform.position, speed * Time.deltaTime);
     }
 }
