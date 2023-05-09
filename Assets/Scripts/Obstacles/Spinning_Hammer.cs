@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spinning_Hammer : MonoBehaviour
 {
+    [SerializeField] private float spinSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class Spinning_Hammer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(200f * Time.deltaTime, 0f, 0f, Space.Self);
+        transform.Rotate(spinSpeed * Time.deltaTime, 0f, 0f, Space.Self);
     }
 }
