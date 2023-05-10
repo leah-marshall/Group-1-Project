@@ -9,7 +9,7 @@ public class ballcontroller : MonoBehaviour
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
     public Material red, blue, peak;
     private Transform TPCam; // stores player camera
-    private bool grounded;
+    public bool grounded;
     public bool isDiving;
     [SerializeField] private float groundedDist;
     [HideInInspector] public bool onGravityPlatform;
@@ -24,7 +24,8 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] private float StopTime;
     private Collider bounceCollider; 
     private float startHeight, maxHeight, heightGain;
-    private bool highSpeed;
+    public bool highSpeed;
+    private Stopwatch stopwatch;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class ballcontroller : MonoBehaviour
         maxHeight = 0;
         isDiving = false;
         highSpeed = false;
+        stopwatch = GameObject.Find("TimeText").GetComponent<Stopwatch>();
     }
 
     void Update(){ 
@@ -85,7 +87,6 @@ public class ballcontroller : MonoBehaviour
             Debug.Log("max height: " + maxHeight);
             Debug.Log("height gain: " + heightGain);
         */
-        Debug.Log("high speed: " + highSpeed);
     }
 
     
@@ -95,6 +96,7 @@ public class ballcontroller : MonoBehaviour
         float horizontalMotion = Input.GetAxisRaw("Horizontal");
         float bounce = 0;
         if (Input.GetKey("space")){
+            stopwatch.StartStopwatch();
          //   spacebar.enabled = true;
             bounce = 1;
             isDiving = true;
@@ -102,21 +104,15 @@ public class ballcontroller : MonoBehaviour
         //    spacebar.enabled = false;
             bounce = 0;
         }
-            Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
-                localVelocity.x = Mathf.Clamp(localVelocity.x, -MaxSpeed, MaxSpeed);
-                localVelocity.z = Mathf.Clamp(localVelocity.z, -MaxSpeed, MaxSpeed);
-                if (!highSpeed){
-                    localVelocity.y = Mathf.Clamp(localVelocity.y, -BounceHeightLimit*2, BounceHeightLimit);
-                } else {
-                    localVelocity.y = Mathf.Clamp(localVelocity.y, -BounceHeightLimit*5, BounceHeightLimit*5);
-                }
-            playerBody.velocity = transform.TransformDirection(localVelocity);  
-       
+            
+        speedCap();
           Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
             if (forwardMotion == 0){
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, StopTime); 
             } else if (horizontalMotion == 0){
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
+            } else {
+                stopwatch.StartStopwatch();
             }
             playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
             + (playerSphere.right * horizontalMotion * MoveSpeed)
@@ -128,6 +124,48 @@ public class ballcontroller : MonoBehaviour
         if (Input.GetKey("left shift")){
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, 0), ref velocityRef, StopTime/3); 
         }
+    }
+
+    void speedCap(){
+    Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
+                /*localVelocity.x = Mathf.Clamp(localVelocity.x, -MaxSpeed, MaxSpeed);
+                localVelocity.z = Mathf.Clamp(localVelocity.z, -MaxSpeed, MaxSpeed);
+                */
+                int xDir = 0;
+                int zDir = 0;
+                if (localVelocity.x > 0){
+                    xDir = 1;
+                } else if (localVelocity.x < 0){
+                    xDir = -1;
+                }
+
+                if (localVelocity.z > 0){
+                    zDir = 1;
+                } else if (localVelocity.z < 0){
+                    zDir = -1;
+                }
+
+                if (localVelocity.x >= MaxSpeed || localVelocity.x <= -MaxSpeed){
+                    localVelocity.x = Mathf.Lerp(localVelocity.x, MaxSpeed * xDir, 0.05f);
+                }
+                if (!highSpeed){
+                    if (localVelocity.y >= BounceHeightLimit){
+                        localVelocity.y = Mathf.Lerp(localVelocity.y, BounceHeightLimit, 0.09f);
+                    } else if (localVelocity.y <= -BounceHeightLimit * 2){
+                        localVelocity.y = Mathf.Lerp(localVelocity.y, -BounceHeightLimit*2, 0.09f);
+                    }
+                } else {
+                     if (localVelocity.y >= BounceHeightLimit*5){
+                        localVelocity.y = Mathf.Lerp(localVelocity.y, BounceHeightLimit *5, 0.09f);
+                    } else if (localVelocity.y <= -BounceHeightLimit * 5){
+                        localVelocity.y = Mathf.Lerp(localVelocity.y, -BounceHeightLimit*6, 0.09f);
+                    }
+                }
+                if (localVelocity.z >= MaxSpeed || localVelocity.z <= -MaxSpeed){
+                    localVelocity.z = Mathf.Lerp(localVelocity.z, MaxSpeed * zDir, 0.05f);
+                }
+
+            playerBody.velocity = transform.TransformDirection(localVelocity);  
     }
 
     void highlightPeak(){
@@ -166,14 +204,14 @@ public class ballcontroller : MonoBehaviour
             lerpSpeed = 0.01f;
         }
         if (playerBody.velocity.magnitude >= 20.0f){
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60 + playerBody.velocity.magnitude * 1.15f, lerpSpeed);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70 + playerBody.velocity.magnitude * 1.15f, lerpSpeed);
         } else {
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 60, 0.05f);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70, 0.05f);
         }
         if (!highSpeed){
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 60, 90);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 95);
         } else {
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 60, 110);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 115);
         }
         Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
         // Thread Reference Begins Here
