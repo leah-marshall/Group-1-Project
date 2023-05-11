@@ -27,6 +27,8 @@ public class ballcontroller : MonoBehaviour
     public bool highSpeed;
     private Stopwatch stopwatch;
 
+    [SerializeField] Material mat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,13 +98,16 @@ public class ballcontroller : MonoBehaviour
         float horizontalMotion = Input.GetAxisRaw("Horizontal");
         float bounce = 0;
         if (Input.GetKey("space")){
+            mat.SetFloat("_Index", 2);
             stopwatch.StartStopwatch();
          //   spacebar.enabled = true;
             bounce = 1;
             isDiving = true;
+             
         } else {
         //    spacebar.enabled = false;
             bounce = 0;
+            mat.SetFloat("_Index", 0);
         }
             
         speedCap();
