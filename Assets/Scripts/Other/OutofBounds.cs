@@ -23,5 +23,9 @@ public class OutofBounds : MonoBehaviour
             playerPos.position = respawnPoint.currentCheckPoint;
             stopwatch.StopStopwatch();
         }
+
+        if (other.tag == "Box"){
+            Destroy(other.gameObject);
+        }
     }
 }

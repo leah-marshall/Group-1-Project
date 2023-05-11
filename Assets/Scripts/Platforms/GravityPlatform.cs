@@ -7,12 +7,25 @@ public class GravityPlatform : MonoBehaviour
     private Transform player;
     private Rigidbody playerBody;
     private ballcontroller playerController;
-    [SerializeField] private Vector3 gravityDirection;
+    private Vector3 gravityDirection;
+    [SerializeField] private float gravityMultiplier = 1;
+    public bool leftGravity, rightGravity, upGravity, forwardGravity, backwardGravity;
     private bool inGravityArea = false;
     private Renderer playerMat;
     // Start is called before the first frame update
     void Start()
     {
+        if (leftGravity){
+            gravityDirection = new Vector3 (-30*gravityMultiplier, 0, 0);
+        } else if (rightGravity){
+            gravityDirection = new Vector3 (30*gravityMultiplier, 0, 0);
+        } else if (upGravity){
+            gravityDirection = new Vector3 (0, 30*gravityMultiplier, 0);
+        } else if (forwardGravity){
+            gravityDirection = new Vector3 (0, 0, -30*gravityMultiplier);
+        } else if (backwardGravity){
+            gravityDirection = new Vector3 (0, 0, 30*gravityMultiplier);
+        }
         player = GameObject.Find("Player").GetComponent<Transform>();
         playerBody = player.GetComponent<Rigidbody>();
         playerController = player.GetComponent<ballcontroller>();

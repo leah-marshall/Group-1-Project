@@ -105,18 +105,12 @@ public class ballcontroller : MonoBehaviour
             bounce = 0;
         }
             
-        speedCap();
-          Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
-            if (forwardMotion == 0){
-                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, StopTime); 
-            } else if (horizontalMotion == 0){
-                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
-            } else {
-                stopwatch.StartStopwatch();
-            }
+        speedCap(forwardMotion, horizontalMotion);
+            
             playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
             + (playerSphere.right * horizontalMotion * MoveSpeed)
             + (downDirection * bounce * BounceSpeed));
+            
     }
 
     void brake(){
@@ -126,27 +120,10 @@ public class ballcontroller : MonoBehaviour
         }
     }
 
-    void speedCap(){
+    void speedCap(float forwardMotion, float horizontalMotion){
     Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
-                /*localVelocity.x = Mathf.Clamp(localVelocity.x, -MaxSpeed, MaxSpeed);
-                localVelocity.z = Mathf.Clamp(localVelocity.z, -MaxSpeed, MaxSpeed);
-                */
-                int xDir = 0;
-                int zDir = 0;
-                if (localVelocity.x > 0){
-                    xDir = 1;
-                } else if (localVelocity.x < 0){
-                    xDir = -1;
-                }
-
-                if (localVelocity.z > 0){
-                    zDir = 1;
-                } else if (localVelocity.z < 0){
-                    zDir = -1;
-                }
-
                 if (localVelocity.x >= MaxSpeed || localVelocity.x <= -MaxSpeed){
-                    localVelocity.x = Mathf.Lerp(localVelocity.x, MaxSpeed * xDir, 0.05f);
+                    localVelocity.x = Mathf.Lerp(localVelocity.x, MaxSpeed * (localVelocity.x/Mathf.Abs(localVelocity.x)), 0.05f);
                 }
                 if (!highSpeed){
                     if (localVelocity.y >= BounceHeightLimit){
@@ -162,10 +139,18 @@ public class ballcontroller : MonoBehaviour
                     }
                 }
                 if (localVelocity.z >= MaxSpeed || localVelocity.z <= -MaxSpeed){
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, MaxSpeed * zDir, 0.05f);
+                    localVelocity.z = Mathf.Lerp(localVelocity.z, MaxSpeed * (localVelocity.z/Mathf.Abs(localVelocity.z)), 0.05f);
                 }
 
             playerBody.velocity = transform.TransformDirection(localVelocity);  
+            Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+            if (forwardMotion == 0){
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, StopTime); 
+            } else if (horizontalMotion == 0){
+                playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
+            } else {
+                stopwatch.StartStopwatch();
+            }
     }
 
     void highlightPeak(){
