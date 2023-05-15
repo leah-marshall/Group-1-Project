@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3572035724568726446}
   - component: {fileID: 3572035724568726443}
   m_Layer: 3
-  m_Name: GravityWallLeft
+  m_Name: GravityWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
