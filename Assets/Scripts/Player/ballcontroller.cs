@@ -21,7 +21,7 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float BounceSpeed;
     [SerializeField] private float BounceHeightLimit;
-    [SerializeField] private float StopTime;
+    public float StopTime;
     private Collider bounceCollider; 
     private float startHeight, maxHeight, heightGain;
     public bool highSpeed;
@@ -95,7 +95,7 @@ public class ballcontroller : MonoBehaviour
         float forwardMotion = Input.GetAxisRaw("Vertical");
         float horizontalMotion = Input.GetAxisRaw("Horizontal");
         float bounce = 0;
-        if (Input.GetKey("space")){
+        if (Input.GetKey("space") || Input.GetMouseButton(0)){
             stopwatch.StartStopwatch();
          //   spacebar.enabled = true;
             bounce = 1;
@@ -146,9 +146,11 @@ public class ballcontroller : MonoBehaviour
             Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
             if (forwardMotion == 0){
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, StopTime); 
-            } else if (horizontalMotion == 0){
+            }
+            if (horizontalMotion == 0){
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
-            } else {
+            }
+            if (forwardMotion != 0 || horizontalMotion != 0){
                 stopwatch.StartStopwatch();
             }
     }
@@ -194,9 +196,17 @@ public class ballcontroller : MonoBehaviour
             TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70, 0.05f);
         }
         if (!highSpeed){
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 95);
+            if (TPCam.GetComponent<Camera>().fieldOfView > 95){
+                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 95, lerpSpeed);
+            } else {
+                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 95);
+            }
         } else {
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 115);
+            if (TPCam.GetComponent<Camera>().fieldOfView > 110){
+                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 110, lerpSpeed*2);
+            } else {
+                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 110);
+            }
         }
         Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
         // Thread Reference Begins Here

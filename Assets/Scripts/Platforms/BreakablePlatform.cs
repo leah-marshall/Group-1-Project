@@ -14,19 +14,23 @@ public class BreakablePlatform : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerStay(Collider other)
     {
-        
-        if (other.name == "Player")
+        if (other.name == "Player"){
             if(player.GetComponent<ballcontroller>().isDiving)
             {
                 Destroy(gameObject, 0f);
-            }    
-        }
+            }  
+        }  
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Player"){
+            if(player.GetComponent<ballcontroller>().isDiving)
+            {
+                Destroy(gameObject, 0f);
+            }  
+        }  
+    }
 }
