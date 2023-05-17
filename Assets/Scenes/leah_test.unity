@@ -775,6 +775,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: cbc7dcc1f288a4d4c8058361baad9867, type: 2}
+    - target: {fileID: 4746458307751430589, guid: 3a1759d97c73c104380ad47a767d2c3a, type: 3}
+      propertyPath: spinSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4746458307751430590, guid: 3a1759d97c73c104380ad47a767d2c3a, type: 3}
       propertyPath: m_RootOrder
       value: 5
