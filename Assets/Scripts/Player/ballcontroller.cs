@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ballcontroller : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class ballcontroller : MonoBehaviour
     private float startHeight, maxHeight, heightGain;
     public bool highSpeed;
     private Stopwatch stopwatch;
+    [HideInInspector] public bool movementEnabled;
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +46,13 @@ public class ballcontroller : MonoBehaviour
         isDiving = false;
         highSpeed = false;
         stopwatch = GameObject.Find("TimeText").GetComponent<Stopwatch>();
+        movementEnabled = true;
     }
 
     void Update(){ 
         highlightPeak();
         camControl();
+        quickRestart();
     }
 
     void FixedUpdate()
@@ -106,10 +110,11 @@ public class ballcontroller : MonoBehaviour
         }
             
         speedCap(forwardMotion, horizontalMotion);
-            
-            playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
-            + (playerSphere.right * horizontalMotion * MoveSpeed)
-            + (downDirection * bounce * BounceSpeed));
+            if (movementEnabled){
+                playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
+                + (playerSphere.right * horizontalMotion * MoveSpeed)
+                + (downDirection * bounce * BounceSpeed));
+            }
             
     }
 
@@ -123,7 +128,7 @@ public class ballcontroller : MonoBehaviour
     void speedCap(float forwardMotion, float horizontalMotion){
     Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
                 if (localVelocity.x >= MaxSpeed || localVelocity.x <= -MaxSpeed){
-                    localVelocity.x = Mathf.Lerp(localVelocity.x, MaxSpeed * (localVelocity.x/Mathf.Abs(localVelocity.x)), 0.05f);
+                    localVelocity.x = Mathf.Lerp(localVelocity.x, MaxSpeed * (Mathf.Sign(localVelocity.x)), 0.05f);
                 }
                 if (!highSpeed){
                     if (localVelocity.y >= BounceHeightLimit){
@@ -139,7 +144,7 @@ public class ballcontroller : MonoBehaviour
                     }
                 }
                 if (localVelocity.z >= MaxSpeed || localVelocity.z <= -MaxSpeed){
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, MaxSpeed * (localVelocity.z/Mathf.Abs(localVelocity.z)), 0.05f);
+                    localVelocity.z = Mathf.Lerp(localVelocity.z, MaxSpeed * (Mathf.Sign(localVelocity.z)), 0.05f);
                 }
 
             playerBody.velocity = transform.TransformDirection(localVelocity);  
@@ -186,6 +191,24 @@ public class ballcontroller : MonoBehaviour
 
     void camControl()
     {
+        camFOV();
+        Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
+        // Thread Reference Begins Here
+        float deltaX = Input.GetAxis("Mouse X");
+        // https://forum.unity.com/threads/how-can-i-lock-the-cursor-while-detecting-mouse-position.833401/ looked at ThermalFusion's
+        // comment to find out that input.getaxis mouse x allows cursor to be locked while tracking change in mouse position
+        // Thread Reference Ends Here
+        currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
+        camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
+        playerSphere.rotation = camYaw; // rotate camera
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        isDiving = false;
+    }
+
+    void camFOV(){
         float lerpSpeed = 0.1f;
         if (highSpeed){
             lerpSpeed = 0.01f;
@@ -208,19 +231,12 @@ public class ballcontroller : MonoBehaviour
                 TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 110);
             }
         }
-        Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
-        // Thread Reference Begins Here
-        float deltaX = Input.GetAxis("Mouse X");
-        // https://forum.unity.com/threads/how-can-i-lock-the-cursor-while-detecting-mouse-position.833401/ looked at ThermalFusion's
-        // comment to find out that input.getaxis mouse x allows cursor to be locked while tracking change in mouse position
-        // Thread Reference Ends Here
-        currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
-        camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
-        playerSphere.rotation = camYaw; // rotate camera
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        isDiving = false;
+    void quickRestart(){
+        if (Input.GetKeyDown(KeyCode.R)){
+            Physics.gravity = new Vector3(0, -30f, 0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

@@ -37,7 +37,6 @@ public class TiltPlatform : MonoBehaviour
     void OnCollisionEnter(Collision other){
         if (other.collider.name == "Player"){
             playerBody.AddForce(gameObject.transform.up * rebound, ForceMode.Impulse);
-            Debug.Log("doing it");
         }
     }
     void OnCollisionExit(Collision other){
@@ -45,7 +44,6 @@ public class TiltPlatform : MonoBehaviour
             player.StopTime = 0.5f;
             StopTimeIncrease = true;
             playerBody.AddForce(gameObject.transform.up * rebound, ForceMode.Impulse);
-            Debug.Log("doing it");
         }
     }
 }

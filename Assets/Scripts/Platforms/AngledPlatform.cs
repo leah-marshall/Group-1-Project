@@ -9,6 +9,7 @@ public class AngledPlatform : MonoBehaviour
     private float StopTimeSave;
     private float StopTimeTimer;
     private bool StopTimeIncrease;
+    [SerializeField] private bool vertical;
     [SerializeField] private float rebound;
 
     
@@ -37,7 +38,11 @@ public class AngledPlatform : MonoBehaviour
         if (other.collider.name == "Player"){
             player.StopTime = 0.5f;
             StopTimeIncrease = true;
-            playerBody.AddForce(gameObject.transform.forward * rebound, ForceMode.Impulse);
+            if (!vertical){
+                playerBody.AddForce(gameObject.transform.forward * rebound * Mathf.Sign(playerBody.velocity.y), ForceMode.Impulse);
+            } else {
+                playerBody.AddForce(gameObject.transform.forward * rebound, ForceMode.Impulse);
+            }
         }
     } 
 }

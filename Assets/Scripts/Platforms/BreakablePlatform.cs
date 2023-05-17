@@ -23,14 +23,4 @@ public class BreakablePlatform : MonoBehaviour
             }  
         }  
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.name == "Player"){
-            if(player.GetComponent<ballcontroller>().isDiving)
-            {
-                Destroy(gameObject, 0f);
-            }  
-        }  
-    }
 }
