@@ -5,32 +5,22 @@ using UnityEngine;
 public class BreakablePlatform : MonoBehaviour
 {
     Rigidbody rb;
-    public GameObject player;
-    bool playerIsDiving;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody>();
-        playerIsDiving = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerStay(Collider other)
     {
-
-    }
-
-    void OnTriggerEnter(Collider collision)
-    {
-        
-        if (collision.gameObject.tag == "Player")
-        {
-            playerIsDiving = player.GetComponent<ballcontroller>().isDiving;
-            if(playerIsDiving == true)
+        if (other.name == "Player"){
+            if(player.GetComponent<ballcontroller>().isDiving)
             {
                 Destroy(gameObject, 0f);
-            }    
-        }
+            }  
+        }  
     }
 }

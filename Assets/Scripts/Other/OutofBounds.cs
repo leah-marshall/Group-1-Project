@@ -6,6 +6,7 @@ public class OutofBounds : MonoBehaviour
 {
     private Transform playerPos;
     private Rigidbody playerBody;
+    private ballcontroller player;
     private checkPointTracker respawnPoint;
     private Stopwatch stopwatch;
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class OutofBounds : MonoBehaviour
     {
         playerPos = GameObject.Find("Player").GetComponent<Transform>(); 
         playerBody = GameObject.Find("Player").GetComponent<Rigidbody>();
+        player = GameObject.Find("Player").GetComponent<ballcontroller>();
         respawnPoint = GameObject.Find("Player").GetComponent<checkPointTracker>();
         stopwatch = GameObject.Find("TimeText").GetComponent<Stopwatch>();
     }
@@ -20,8 +22,13 @@ public class OutofBounds : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if (other.name == "Player"){
             playerBody.velocity = new Vector3 (0, 0, 0);
+            player.highSpeed = false;
             playerPos.position = respawnPoint.currentCheckPoint;
             stopwatch.StopStopwatch();
+        }
+
+        if (other.tag == "Box"){
+            Destroy(other.gameObject);
         }
     }
 }

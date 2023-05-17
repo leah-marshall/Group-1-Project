@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3558431817652963368}
   - component: {fileID: 3558431817652963369}
   - component: {fileID: 3558431817652963370}
+  - component: {fileID: 211722114}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -115,16 +116,18 @@ MonoBehaviour:
   red: {fileID: 2100000, guid: 6367d363c6e78da4e896f5a772cb3bbe, type: 2}
   blue: {fileID: 2100000, guid: 21b37b9816cfa2243b0428b11c3f87ac, type: 2}
   peak: {fileID: 2100000, guid: a6cc6b9360d29b942afde388beda44fc, type: 2}
+  grounded: 0
+  isDiving: 0
   groundedDist: 2
   onGravityPlatform: 0
   downDirection: {x: 0, y: 0, z: 0}
-  spacebar: {fileID: 0}
   sensitivity: 10
-  MaxSpeed: 17.5
-  MoveSpeed: 40
+  MaxSpeed: 14
+  MoveSpeed: 35
   BounceSpeed: 150
-  BounceHeightLimit: 25
+  BounceHeightLimit: 17.5
   StopTime: 0.5
+  highSpeed: 0
 --- !u!54 &3558431817652963370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,6 +144,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &211722114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558431817652963371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70dac39c5b15d4f42aa5463acc56eb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &3558431818438316387
 GameObject:
   m_ObjectHideFlags: 0

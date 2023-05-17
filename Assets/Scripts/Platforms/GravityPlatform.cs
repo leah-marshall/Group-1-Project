@@ -7,12 +7,26 @@ public class GravityPlatform : MonoBehaviour
     private Transform player;
     private Rigidbody playerBody;
     private ballcontroller playerController;
-    [SerializeField] private Vector3 gravityDirection;
+    private Vector3 gravityDirection;
+    [SerializeField] private float gravityMultiplier = 1;
+    [SerializeField] private float gravitySlow = 0.01f;
+    public bool leftGravity, rightGravity, upGravity, forwardGravity, backwardGravity;
     private bool inGravityArea = false;
     private Renderer playerMat;
     // Start is called before the first frame update
     void Start()
     {
+        if (leftGravity){
+            gravityDirection = new Vector3 (-30*gravityMultiplier, 0, 0);
+        } else if (rightGravity){
+            gravityDirection = new Vector3 (30*gravityMultiplier, 0, 0);
+        } else if (upGravity){
+            gravityDirection = new Vector3 (0, 30*gravityMultiplier, 0);
+        } else if (forwardGravity){
+            gravityDirection = new Vector3 (0, 0, -30*gravityMultiplier);
+        } else if (backwardGravity){
+            gravityDirection = new Vector3 (0, 0, 30*gravityMultiplier);
+        }
         player = GameObject.Find("Player").GetComponent<Transform>();
         playerBody = player.GetComponent<Rigidbody>();
         playerController = player.GetComponent<ballcontroller>();
@@ -34,7 +48,7 @@ public class GravityPlatform : MonoBehaviour
             playerMat.material = playerController.red;
             Physics.gravity = new Vector3(0, 0, 0);
             Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
-            playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z), ref velocityRef, 0.01f); 
+            playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z), ref velocityRef, gravitySlow); 
             playerController.downDirection = -gameObject.transform.up;
             playerController.onGravityPlatform = true;
             inGravityArea = true;
