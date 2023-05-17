@@ -7,7 +7,7 @@ public class MovingPlatform : MonoBehaviour
     public GameObject[] points;
     [SerializeField] private float speed = 2f;
     int current_destination = 0;
-    [SerializeField] private const float WAIT_TIME = 2f;
+    [SerializeField] private float WAIT_TIME = 2f;
     private float waited_for = 0f;
     private bool is_waiting = false;
 
