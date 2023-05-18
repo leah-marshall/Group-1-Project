@@ -59,11 +59,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Physics.gravity = new Vector3(0, -30f, 0);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        Physics.gravity = new Vector3(0, -30f, 0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
