@@ -15,7 +15,7 @@ public class thirdpersoncamera : MonoBehaviour
         playerRoll = GameObject.Find("Rotator").GetComponent<Transform>(); // using separate script to control local rotation of camera (do not want to roll player's body)
         playerController = playerRoll.parent.GetComponent<ballcontroller>();
         currentRoll = Input.mousePosition.y;
-        pause_menu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
+        pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame

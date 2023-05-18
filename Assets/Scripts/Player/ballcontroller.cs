@@ -48,7 +48,7 @@ public class ballcontroller : MonoBehaviour
         highSpeed = false;
         stopwatch = GameObject.Find("TimeText").GetComponent<Stopwatch>();
         movementEnabled = true;
-        pause_menu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
+        pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
     }
 
     void Update()
@@ -217,9 +217,9 @@ public class ballcontroller : MonoBehaviour
     }
 
     void camFOV(){
-        float lerpSpeed = 0.5f;
+        float lerpSpeed = 2.0f;
         if (highSpeed){
-            lerpSpeed = 0.01f;
+            lerpSpeed = 0.04f;
         }
         if (playerBody.velocity.magnitude >= 20.0f){
             TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70 + playerBody.velocity.magnitude * 1.15f, lerpSpeed * Time.deltaTime);
@@ -234,7 +234,7 @@ public class ballcontroller : MonoBehaviour
             }
         } else {
             if (TPCam.GetComponent<Camera>().fieldOfView > 110){
-                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 110, lerpSpeed*2);
+                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 110, lerpSpeed*2 *Time.deltaTime);
             } else {
                 TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 110);
             }

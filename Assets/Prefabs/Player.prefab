@@ -126,8 +126,10 @@ MonoBehaviour:
   MoveSpeed: 35
   BounceSpeed: 150
   BounceHeightLimit: 17.5
-  StopTime: 0.5
+  StopTime: 0.2
   highSpeed: 0
+  movementEnabled: 0
+  pause_menu: {fileID: 0}
 --- !u!54 &3558431817652963370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,7 +186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3558431818438316387}
   m_LocalRotation: {x: 0.09464494, y: -0, z: -0, w: 0.9955111}
-  m_LocalPosition: {x: 0, y: 0.75, z: -2.33}
+  m_LocalPosition: {x: 0, y: 0.75, z: -2.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -254,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f3faa01a14864c9a0a84746ce45d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause_menu: {fileID: 0}
 --- !u!1 &3558431819651097097
 GameObject:
   m_ObjectHideFlags: 0
