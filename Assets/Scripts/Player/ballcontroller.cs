@@ -203,11 +203,12 @@ public class ballcontroller : MonoBehaviour
         // Thread Reference Ends Here
         currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
         camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
+
         if (!pause_menu.is_paused)
         {
-            Debug.Log("hahahahhahahaha");
             playerSphere.rotation = camYaw; // rotate camera
         }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
