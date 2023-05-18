@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PauseMenu : MonoBehaviour
             Cursor.visible = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(!is_paused)
             {
@@ -54,5 +55,25 @@ public class PauseMenu : MonoBehaviour
         is_paused = false;
         Time.timeScale = 1f;
         pause_menu.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Physics.gravity = new Vector3(0, -30f, 0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        is_paused = false;
+        Time.timeScale = 1f;
+        pause_menu.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
     }
 }
