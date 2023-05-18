@@ -28,6 +28,7 @@ public class ballcontroller : MonoBehaviour
     public bool highSpeed;
     private Stopwatch stopwatch;
     [HideInInspector] public bool movementEnabled;
+    [SerializeField] PauseMenu pause_menu;
 
     // Start is called before the first frame update
     void Start()
@@ -47,9 +48,11 @@ public class ballcontroller : MonoBehaviour
         highSpeed = false;
         stopwatch = GameObject.Find("TimeText").GetComponent<Stopwatch>();
         movementEnabled = true;
+        pause_menu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
-    void Update(){ 
+    void Update()
+    {
         highlightPeak();
         camControl();
         quickRestart();
@@ -200,7 +203,11 @@ public class ballcontroller : MonoBehaviour
         // Thread Reference Ends Here
         currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
         camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
-        playerSphere.rotation = camYaw; // rotate camera
+        if (!pause_menu.is_paused)
+        {
+            Debug.Log("hahahahhahahaha");
+            playerSphere.rotation = camYaw; // rotate camera
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -209,18 +216,18 @@ public class ballcontroller : MonoBehaviour
     }
 
     void camFOV(){
-        float lerpSpeed = 0.1f;
+        float lerpSpeed = 0.5f;
         if (highSpeed){
             lerpSpeed = 0.01f;
         }
         if (playerBody.velocity.magnitude >= 20.0f){
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70 + playerBody.velocity.magnitude * 1.15f, lerpSpeed);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70 + playerBody.velocity.magnitude * 1.15f, lerpSpeed * Time.deltaTime);
         } else {
-            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70, 0.05f);
+            TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 70, 0.05f * Time.deltaTime);
         }
         if (!highSpeed){
             if (TPCam.GetComponent<Camera>().fieldOfView > 95){
-                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 95, lerpSpeed);
+                TPCam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(TPCam.GetComponent<Camera>().fieldOfView, 95, lerpSpeed * Time.deltaTime);
             } else {
                 TPCam.GetComponent<Camera>().fieldOfView = Mathf.Clamp(TPCam.GetComponent<Camera>().fieldOfView, 70, 95);
             }
