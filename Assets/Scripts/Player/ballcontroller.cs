@@ -8,7 +8,7 @@ public class ballcontroller : MonoBehaviour
 {
     private Transform playerSphere; // stores player sphere object
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
-    public Material red, blue, peak;
+    public Material red, blue;
     private Transform TPCam; // stores player camera
     public bool grounded;
     public bool isDiving;
@@ -24,7 +24,8 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] private float BounceHeightLimit;
     public float StopTime;
     private Collider bounceCollider; 
-    private float startHeight, maxHeight, heightGain;
+    private float startHeight, maxHeight;
+    public float heightGain;
     public bool highSpeed;
     private Stopwatch stopwatch;
     [HideInInspector] public bool movementEnabled;
@@ -53,7 +54,6 @@ public class ballcontroller : MonoBehaviour
 
     void Update()
     {
-        highlightPeak();
         camControl();
         quickRestart();
     }
@@ -161,14 +161,6 @@ public class ballcontroller : MonoBehaviour
             if (forwardMotion != 0 || horizontalMotion != 0){
                 stopwatch.StartStopwatch();
             }
-    }
-
-    void highlightPeak(){
-        if (!grounded && !onGravityPlatform && playerBody.velocity.y < 3f){
-            playerSphere.GetComponent<Renderer>().material = peak;
-        } else if (!onGravityPlatform){
-            playerSphere.GetComponent<Renderer>().material = blue;
-        }
     }
 
     void groundCheck(){ // looked at previous script
