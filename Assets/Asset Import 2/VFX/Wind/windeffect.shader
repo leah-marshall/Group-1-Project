@@ -4,6 +4,7 @@ Shader "Unlit/windeffect"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _Cutoff ("Alpha", Range(0,1)) = 1
+        _Color ("Color Tone", Color) = (1,1,1,1)
       
     }
     SubShader
@@ -41,6 +42,7 @@ Shader "Unlit/windeffect"
                    
             float _Cutoff;
             float4 _Offset;
+            fixed4 _Color;
 
 
             v2f vert (appdata v)
@@ -58,7 +60,7 @@ Shader "Unlit/windeffect"
                 fixed4 col = tex2D(_MainTex, half2(i.uv.x+ 0.2*sin(_Time.y), i.uv.y+_Time.y));
                 clip(col.a - _Cutoff);
                  
-                return col;
+                return col*_Color;
             }
             ENDCG
         }

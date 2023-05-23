@@ -66,8 +66,8 @@ Shader "Unlit/NewUnlitShader"
                 fixed4 weight = min(xDist, yDist);
 
                 weight = smoothstep(0.2, 1.0, weight);
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                v.vertex.xyz += v.normal * _StrokeWeight;  
+            
+                v.vertex.xyz += v.normal * _StrokeWeight ;  
                  
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.vertex.z -= 0.01 ;
@@ -124,6 +124,8 @@ Shader "Unlit/NewUnlitShader"
             float _RimThreshold;
             float _RimSmooth;
 
+            // For ramp calculations later
+            // This function will return a value between 0 to 1. This value indicates the current half Lamber's diffusion in the ramp.
             float linearstep (float min, float max, float t)
             {
                 return saturate((t - min) / (max - min));
@@ -161,22 +163,23 @@ Shader "Unlit/NewUnlitShader"
                 float3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
 
                 // Rim 
-                // Opposite of Lambert produce the rim 
+                // Angle between the view and normal
                 float NoV = dot(i.worldNormal, viewDir);
+                // Closer to edge, the brighter it is
                 float rim = (1 - max(0, NoV)) * NoL;
 
-                // rim color
+                // _RimThreshold is the mid value, when the smoothstep result nears to 1, the rim color will show.
                 float3 rimColor = smoothstep(_RimThreshold - _RimSmooth / 2, _RimThreshold + _RimSmooth / 2, rim) * _RimColor;
 
                 // Color Ramp
-                // Calculate color ramp by lighting
+                // Calculate color ramp based on halfLmabert's diffusion, bright or dark
                 float ramp = linearstep(_RampStart, _RampStart + _RampSize, halfLambert);
-                float step = ramp * _RampStep;  // RampStep = 1
-                float gridStep = floor(step);   // Current ramp
-                float smoothStep = smoothstep(gridStep, gridStep + _RampSmooth, step) + gridStep;
-                ramp = smoothStep / _RampStep;  
+                float step = ramp * _RampStep;  // RampStep = 1 initially, find the specific area in the ramp
+                float gridStep = floor(step);   // Round to the integer
+                float smoothStep = smoothstep(gridStep, gridStep + _RampSmooth, step) + gridStep; //Returns a value between 0 to 1.
+                ramp = smoothStep / _RampStep;  // When ramp = 0, it means at the start point of the ramp, it should be dark. When ramp = 1, vice versa. 
                 // Final color ramp
-                float3 rampColor = lerp(_DarkColor, _LightColor, ramp);
+                float3 rampColor = lerp(_DarkColor, _LightColor, ramp); // Customised colors in ramp can prevent a complete balck in dark area
                 rampColor *= col;
                 
                 // Final Color output

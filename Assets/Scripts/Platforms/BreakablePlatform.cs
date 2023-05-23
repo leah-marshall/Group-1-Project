@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class BreakablePlatform : MonoBehaviour
 {
-    Rigidbody rb;
+    [SerializeField] Rigidbody rb1;
+    [SerializeField] Rigidbody rb2;
+    [SerializeField] Rigidbody rb3;
+    [SerializeField] Rigidbody rb4;
+    [SerializeField] Rigidbody rb5;
+    // private Rigidbody rb;
     private GameObject player;
 
-    // Start is called before the first frame update
+    // Combined Zewuzi's New Behaviour Script w/ Leah's Breakable platform scripts
     void Start()
     {
         player = GameObject.Find("Player");
-        rb = GetComponent<Rigidbody>();
+        // rb = GetComponent<Rigidbody>();
     }
 
     void OnTriggerStay(Collider other)
@@ -19,7 +24,19 @@ public class BreakablePlatform : MonoBehaviour
         if (other.name == "Player"){
             if(player.GetComponent<ballcontroller>().isDiving)
             {
-                Destroy(gameObject, 0f);
+                rb1.gameObject.transform.parent = null;
+                rb2.gameObject.transform.parent = null;
+                rb3.gameObject.transform.parent = null;
+                rb4.gameObject.transform.parent = null;
+                rb5.gameObject.transform.parent = null;
+                
+                // Destroy(gameObject, 0f);
+                rb1.isKinematic = false;
+                rb2.isKinematic = false;
+                rb3.isKinematic = false;
+                rb4.isKinematic = false;
+                rb5.isKinematic = false;
+                Destroy(this.gameObject);
             }  
         }  
     }

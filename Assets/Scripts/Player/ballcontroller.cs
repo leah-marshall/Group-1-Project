@@ -30,6 +30,8 @@ public class ballcontroller : MonoBehaviour
     private Stopwatch stopwatch;
     [HideInInspector] public bool movementEnabled;
     [SerializeField] PauseMenu pause_menu;
+    private Material PostProcessMat;
+    private float indexFloat = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,7 @@ public class ballcontroller : MonoBehaviour
         stopwatch = GameObject.Find("TimeText").GetComponent<Stopwatch>();
         movementEnabled = true;
         pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
+        PostProcessMat = TPCam.GetComponent<PostProcessingScript>().PostProcess;
     }
 
     void Update()
@@ -62,6 +65,7 @@ public class ballcontroller : MonoBehaviour
     {
         groundCheck();
         updateMaxHeight();
+        speedLines();
         minimumBounce();
         move();
     }
@@ -238,5 +242,14 @@ public class ballcontroller : MonoBehaviour
             Physics.gravity = new Vector3(0, -30f, 0);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void speedLines(){
+        if (playerBody.velocity.magnitude > MaxSpeed*2.25f){
+            indexFloat = Mathf.Lerp(indexFloat, 1.0f, 10f * Time.deltaTime);
+        } else {
+            indexFloat = Mathf.Lerp(indexFloat, 0.001f, 10f * Time.deltaTime);
+        }
+        PostProcessMat.SetFloat("_Index", indexFloat);
     }
 }
