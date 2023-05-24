@@ -24,9 +24,19 @@ Material:
         m_Texture: {fileID: 2800000, guid: b7737ab49e747684b9a96e9485d66301, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RampTex:
+        m_Texture: {fileID: 2800000, guid: 991dca9232f024d4abfe819b025a9d9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceTex:
+        m_Texture: {fileID: 2800000, guid: b467edc1b1c48da44b98da506449308e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistortIndex: 0.017
+    - _Clip: 0
+    - _DistortIndex: 0.13
+    - _Transparency: 0.55
     m_Colors:
-    - _Color: {r: 0.5660378, g: 0.055675842, b: 0, a: 0.7294118}
+    - _Color: {r: 1, g: 0.2901961, b: 0.3647059, a: 1}
   m_BuildTextureStacks: []

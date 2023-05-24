@@ -50,7 +50,6 @@ public class GravityPlatform : MonoBehaviour
             Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
             playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z), ref velocityRef, gravitySlow); 
             playerController.downDirection = gameObject.transform.up;
-            Debug.Log(playerController.downDirection);
             playerController.onGravityPlatform = true;
             inGravityArea = true;
         }

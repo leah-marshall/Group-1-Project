@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7644639096616711224}
   - component: {fileID: 6320208747896930426}
   - component: {fileID: 6320208747896930430}
-  m_Layer: 3
+  - component: {fileID: 76494225}
+  m_Layer: 9
   m_Name: shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +116,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1160288528575290666, guid: 2824778c46270c74aae92761d57dd9b9, type: 3}
+--- !u!114 &76494225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178074101602514592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0d1b3b15f77f846a8e67b9a511768c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fading: 0
+  glassMat: {fileID: 2100000, guid: 74929b103b7a4cc49952f863dbc9a564, type: 2}
 --- !u!1 &2485278961566913083
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +143,8 @@ GameObject:
   - component: {fileID: 1776392813713501778}
   - component: {fileID: 6320208747225395242}
   - component: {fileID: 6320208747225395246}
-  m_Layer: 3
+  - component: {fileID: 1790556967}
+  m_Layer: 9
   m_Name: shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,6 +246,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5673084798034043110, guid: 2824778c46270c74aae92761d57dd9b9, type: 3}
+--- !u!114 &1790556967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485278961566913083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0d1b3b15f77f846a8e67b9a511768c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fading: 0
+  glassMat: {fileID: 2100000, guid: 74929b103b7a4cc49952f863dbc9a564, type: 2}
 --- !u!1 &4508189922560730928
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +273,8 @@ GameObject:
   - component: {fileID: 6414641562704231259}
   - component: {fileID: 6320208746618157888}
   - component: {fileID: 6320208746618157892}
-  m_Layer: 3
+  - component: {fileID: 735649068}
+  m_Layer: 9
   m_Name: shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +376,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 697903988925253736, guid: 2824778c46270c74aae92761d57dd9b9, type: 3}
+--- !u!114 &735649068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508189922560730928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0d1b3b15f77f846a8e67b9a511768c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fading: 0
+  glassMat: {fileID: 2100000, guid: 74929b103b7a4cc49952f863dbc9a564, type: 2}
 --- !u!1 &4887510089484712350
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +458,11 @@ MonoBehaviour:
   rb3: {fileID: 6320208748250467289}
   rb4: {fileID: 6320208747896930426}
   rb5: {fileID: 6320208747225395242}
+  rb1Fade: {fileID: 203353065}
+  rb2Fade: {fileID: 735649068}
+  rb3Fade: {fileID: 1977959022}
+  rb4Fade: {fileID: 76494225}
+  rb5Fade: {fileID: 1790556967}
 --- !u!1 &7378057814933857543
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +476,8 @@ GameObject:
   - component: {fileID: 6840918993994307418}
   - component: {fileID: 6320208747385232532}
   - component: {fileID: 6320208747385232616}
-  m_Layer: 3
+  - component: {fileID: 203353065}
+  m_Layer: 9
   m_Name: shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,6 +579,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4122916103799640655, guid: 2824778c46270c74aae92761d57dd9b9, type: 3}
+--- !u!114 &203353065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7378057814933857543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0d1b3b15f77f846a8e67b9a511768c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fading: 0
+  glassMat: {fileID: 2100000, guid: 74929b103b7a4cc49952f863dbc9a564, type: 2}
 --- !u!1 &8390917973699189534
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +606,8 @@ GameObject:
   - component: {fileID: 1409330026863528984}
   - component: {fileID: 6320208748250467289}
   - component: {fileID: 6320208748250467293}
-  m_Layer: 3
+  - component: {fileID: 1977959022}
+  m_Layer: 9
   m_Name: shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,3 +709,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6017172911788317743, guid: 2824778c46270c74aae92761d57dd9b9, type: 3}
+--- !u!114 &1977959022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390917973699189534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0d1b3b15f77f846a8e67b9a511768c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fading: 0
+  glassMat: {fileID: 2100000, guid: 74929b103b7a4cc49952f863dbc9a564, type: 2}

@@ -9,8 +9,10 @@ public class BreakablePlatform : MonoBehaviour
     [SerializeField] Rigidbody rb3;
     [SerializeField] Rigidbody rb4;
     [SerializeField] Rigidbody rb5;
+    [SerializeField] private BreakableFade rb1Fade, rb2Fade, rb3Fade, rb4Fade, rb5Fade;
     // private Rigidbody rb;
     private GameObject player;
+    
 
     // Combined Zewuzi's New Behaviour Script w/ Leah's Breakable platform scripts
     void Start()
@@ -36,6 +38,11 @@ public class BreakablePlatform : MonoBehaviour
                 rb3.isKinematic = false;
                 rb4.isKinematic = false;
                 rb5.isKinematic = false;
+                rb1Fade.fading = true;
+                rb2Fade.fading = true;
+                rb3Fade.fading = true;
+                rb4Fade.fading = true;
+                rb5Fade.fading = true;
                 Destroy(this.gameObject);
             }  
         }  
