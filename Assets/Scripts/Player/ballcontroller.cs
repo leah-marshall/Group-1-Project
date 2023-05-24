@@ -132,8 +132,14 @@ public class ballcontroller : MonoBehaviour
         }
     }
 
+    /*This is for line 142 and is referenced for limiting local velocity on a 3D rigidbody and is from user OhNoDino's answer
+    Author: OhNoDino
+    Location: https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
+    Accessed: 25/05/23
+    */
+
     void speedCap(float forwardMotion, float horizontalMotion){
-    Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); // referenced for limiting local velocity on a 3d rigidbody https://answers.unity.com/questions/404420/rigidbody-constraints-in-local-space.html
+    Vector3 localVelocity = transform.InverseTransformDirection(playerBody.velocity); 
                 if (localVelocity.x >= MaxSpeed || localVelocity.x <= -MaxSpeed){
                     localVelocity.x = Mathf.Lerp(localVelocity.x, MaxSpeed * (Mathf.Sign(localVelocity.x)), 0.05f);
                 }
@@ -154,8 +160,20 @@ public class ballcontroller : MonoBehaviour
                     localVelocity.z = Mathf.Lerp(localVelocity.z, MaxSpeed * (Mathf.Sign(localVelocity.z)), 0.05f);
                 }
 
+            /*For line 176
+            Set the velocity to zero based on user ScriptKid's comment
+            Author: ScriptKid
+            Location: https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+            Accessed: 24/05/23
+
+            Referenced how to use vector3
+            Author: Unity
+            Location: https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html
+            Accessed: 24/05/23
+            */
+
             playerBody.velocity = transform.TransformDirection(localVelocity);  
-            Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+            Vector3 velocityRef = Vector3.zero; 
             if (forwardMotion == 0){
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, playerBody.velocity.y, 0), ref velocityRef, StopTime); 
             }
@@ -167,36 +185,55 @@ public class ballcontroller : MonoBehaviour
             }
     }
 
+    /*For lines 197 to 211
+    From MPIE week 5 practical 2 because Quinn it changed from Camera.main.ViewportPointToRay because ray is relative to the player not the camera 
+    Author: MPIE 
+    Location: week 5 practical 2
+    Accessed: 25/05/23
+     */
+
+    /*For line 198
+    Referenced layer masking documentation for optimization
+    Author: Unity
+    Location: https://docs.unity3d.com/ScriptReference/LayerMask.html
+    Accessed: 25/04/23
+    */
+
+    /*For line 214 to 215 user lordofduct's comment on a solved issue
+    Referenced for the raycast if statement to check if an object on the ground layer was hit by the player, this shows if player is touching the ground 
+    Author: lordofduct
+    Location: https://forum.unity.com/threads/solved-checking-if-raycasthit-null-not-working.370595/#:~:text=RaycastHit%20is%20a%20struct%2C%20structs,RaycastHit%20info%20has%20been%20set 
+    Accessed: 25/05/23
+    */
+
     void groundCheck(){ // looked at previous script
-        LayerMask groundMask = LayerMask.GetMask("Ground"); // referenced layer masking doc for optimization https://docs.unity3d.com/ScriptReference/LayerMask.html
-        // Practical Reference Begins Here
-        Ray groundCheck = new Ray(playerSphere.position, downDirection); // referenced practical 5-2, changed from Camera.main.ViewportPointToRay because ray relative to player not camera (ask how to reference practicals)
+        LayerMask groundMask = LayerMask.GetMask("Ground"); 
+        Ray groundCheck = new Ray(playerSphere.position, downDirection); 
         RaycastHit hitInfo; // as in practical
         // as in practical + Unity Doc for layer masking, only check objects within groundedDist and on ground layer
-        // referenced for 1 line raycast if statement https://forum.unity.com/threads/solved-checking-if-raycasthit-null-not-working.370595/#:~:text=RaycastHit%20is%20a%20struct%2C%20structs,RaycastHit%20info%20has%20been%20set.
-        // author lordofduct
-        // Thread Reference Begins Here
         if (Physics.Raycast(groundCheck, out hitInfo, groundedDist, groundMask)) // check if object on ground layer was hit to see if player is touching ground
         {
-        // Thread Reference Ends Here
             grounded = true;
         } 
         else
         {
             grounded = false;
         }
-        // Practical Reference Ends Here
     }
+
+    /*For lines 235 to 236
+    Cursor to be locked while tracking change in mouse position from user ThermalFusion's comment 
+    Author: ThermalFusion
+    Location: https://forum.unity.com/threads/how-can-i-lock-the-cursor-while-detecting-mouse-position.833401/ 
+    Accessed: 25/05/23
+    */
 
     void camControl()
     {
         camFOV();
         Quaternion camYaw = Quaternion.identity; // quaternion to store camera rotation on y axis
-        // Thread Reference Begins Here
         float deltaX = Input.GetAxis("Mouse X");
-        // https://forum.unity.com/threads/how-can-i-lock-the-cursor-while-detecting-mouse-position.833401/ looked at ThermalFusion's
         // comment to find out that input.getaxis mouse x allows cursor to be locked while tracking change in mouse position
-        // Thread Reference Ends Here
         currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
         camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
 

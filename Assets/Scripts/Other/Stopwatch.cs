@@ -4,7 +4,12 @@ using TMPro;
 using System;
 using UnityEngine;
 
-public class Stopwatch : MonoBehaviour // referenced this video for stopwatch script https://www.youtube.com/watch?v=HLz_k6DSQvU&ab_channel=CocoCode
+public class Stopwatch : MonoBehaviour 
+/*This entire script except from the parts highlighted are from this link
+Author: Coco Code
+Location: https://www.youtube.com/watch?v=HLz_k6DSQvU&ab_channel=CocoCode
+Accessed: 24/05/23
+*/
 {
     private TMP_Text timeText;
     bool stopwatchActive;
@@ -25,7 +30,7 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
             currentTime += Time.deltaTime;
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        string zeroInsert = ""; // added by me
+        string zeroInsert = ""; // Added by Quinn
         if (time.Seconds < 10){
             zeroInsert = "0";
         } 
@@ -37,8 +42,8 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
         if (time.Milliseconds < 100){
             zeroInsertMS2 = "0";
         } 
-        timeText.text = time.Minutes.ToString() + ":" + zeroInsert + time.Seconds.ToString() + ":" + zeroInsertMS1 + zeroInsertMS2 + time.Milliseconds.ToString(); // from tutorial
-        if (time.Minutes >= 10){ // added by me
+        timeText.text = time.Minutes.ToString() + ":" + zeroInsert + time.Seconds.ToString() + ":" + zeroInsertMS1 + zeroInsertMS2 + time.Milliseconds.ToString();
+        if (time.Minutes >= 10){ // Added by Quinn
             timeText.text = "TIME OUT";
         }
     }

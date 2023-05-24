@@ -41,13 +41,25 @@ public class GravityPlatform : MonoBehaviour
         }
     }
 
+    /*For line 62
+    Set the velocity to zero based on user ScriptKid's comment
+    Author: ScriptKid
+    Location: https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+    Accessed: 24/05/23
+
+    Referenced how to use vector3
+    Author: Unity
+    Location: https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html
+    Accessed: 24/05/23
+    */
+
     void OnTriggerEnter(Collider other)
     {
         if (other.name == "Player")
         {
             playerMat.material = playerController.red;
             Physics.gravity = new Vector3(0, 0, 0);
-            Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
+            Vector3 velocityRef = Vector3.zero; 
             playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z), ref velocityRef, gravitySlow); 
             playerController.downDirection = gameObject.transform.up;
             playerController.onGravityPlatform = true;

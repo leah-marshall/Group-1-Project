@@ -38,11 +38,17 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /*For line 53
+    For referencing the Time.timeScale
+    Author: Unity
+    Location: https://docs.unity3d.com/ScriptReference/Time-timeScale.html 
+    Accessed: 25/05/23
+    */
+
     public void Pause()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //https://docs.unity3d.com/ScriptReference/Time-timeScale.html
         is_paused = true;
         Time.timeScale = 0f;
         pause_menu.SetActive(true);
