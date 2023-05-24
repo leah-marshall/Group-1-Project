@@ -62,21 +62,22 @@ Shader "Unlit/Glass 1"
             }
 
             fixed4 frag (v2f i) : SV_Target
-            {
-                 
+            {               
                 fixed4 distortTex = tex2D(_DistortionTex, i.uv);
                 fixed4 surfaceTex = tex2D(_SurfaceTex, i.uv);
-                float2 uv = lerp(i.screenUV.xy/i.screenUV.w, distortTex, _DistortIndex); 
-
-                 
+             
+                float2 uv = lerp(i.screenUV.xy/i.screenUV.w, distortTex, _DistortIndex);         
                 fixed4 grabTex = tex2D(_GrabTex, uv);
                 grabTex *= _Transparency * (_Color+surfaceTex);
-                clip(surfaceTex.r - _Clip);
-                fixed dissolveValue = saturate((surfaceTex.r - _Clip) / (_Clip + 0.05 - _Clip));
-                fixed4 rampTex = tex1D(_RampTex, dissolveValue);
+                grabTex = saturate(grabTex);
+                
+                clip(surfaceTex.g - _Clip);
                  
-                 
-                return saturate((grabTex + rampTex)); 
+
+                fixed dissolveValue = saturate((surfaceTex.r - _Clip) / (_Clip + 0.2 - _Clip));
+                float index = lerp(0, 1,dissolveValue);
+                fixed4 rampTex = tex1D(_RampTex, dissolveValue);  
+                return (grabTex + rampTex * index); 
             }
             ENDCG
         }

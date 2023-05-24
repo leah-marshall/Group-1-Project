@@ -313,8 +313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee5060ba8c7ddd4891f0e0333ac2e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PostProcess: {fileID: 2100000, guid: ac1c2b11c0cfba140ba1b2789c9354ee, type: 2}
+  PostProcess: {fileID: 2100000, guid: c840409b9f6c09d4cabea10e2434963a, type: 2}
   pixelSize: 1
+  index: 1
   radius: 3
   spd: 10
   myCam: {fileID: 3558431818438316385}

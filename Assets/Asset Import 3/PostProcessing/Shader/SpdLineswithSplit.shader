@@ -9,6 +9,7 @@ Shader "Hidden/NewImageEffectShader1"
         _Radius ("Radius", Range(0.0,1000.0))= 6
         _Color ("Color", Color) = (1,1,1,1)
         _Lines ("Lines Texture", 2D) = "white"{}
+        _OffsetIndex ("Offest Strength", Range(0,0.01)) = 0
     }
     SubShader
     {
@@ -68,6 +69,7 @@ Shader "Hidden/NewImageEffectShader1"
             float _Radius;
             float _Index;
             fixed4 _Color;
+            float _OffsetIndex;
 
             fixed4 frag(v2f i) : SV_Target
             {
@@ -76,13 +78,13 @@ Shader "Hidden/NewImageEffectShader1"
                 float2 UV1 =  i.uv - _Center.xy; // For distance 
                 float2 UV = normalize(i.uv - _Center.xy); // For rotation
 
-                float2 offset = 0.01 * float2(cos(_Time.y), sin(_Time.y)); // circular offset
+                float2 offset = _OffsetIndex * float2(cos(_Time.y), sin(_Time.y)); // circular offset
 
                
                 // Split channels to allow offset in r and b channel
-                fixed4 colr = tex2D(_MainTex, i.uv + offset); 
-                fixed4 colb = tex2D(_MainTex, i.uv + offset);
-                fixed4 colg = tex2D(_MainTex, i.uv);
+                fixed3 colr = tex2D(_MainTex, i.uv + offset); 
+                fixed3 colb = tex2D(_MainTex, i.uv + offset);
+                fixed3 colg = tex2D(_MainTex, i.uv);
 
                 //fixed4 maintex = (colr,colg,colb,1);
                 fixed4 maintex = tex2D(_MainTex, i.uv); // Screen

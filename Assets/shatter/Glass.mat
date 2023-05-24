@@ -35,8 +35,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Clip: 0
-    - _DistortIndex: 0.13
-    - _Transparency: 0.55
+    - _DistortIndex: 0.055
+    - _Transparency: 0.46
     m_Colors:
-    - _Color: {r: 1, g: 0.2901961, b: 0.3647059, a: 1}
+    - _Color: {r: 1, g: 0.32941177, b: 0.5764706, a: 1}
   m_BuildTextureStacks: []

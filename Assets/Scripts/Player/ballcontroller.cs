@@ -32,6 +32,7 @@ public class ballcontroller : MonoBehaviour
     [SerializeField] PauseMenu pause_menu;
     private Material PostProcessMat;
     private float indexFloat = 0;
+    private float colourSplit = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -250,6 +251,14 @@ public class ballcontroller : MonoBehaviour
         } else {
             indexFloat = Mathf.Lerp(indexFloat, 0.001f, 10f * Time.deltaTime);
         }
+
+        if (onGravityPlatform){
+            Debug.Log("true");
+            colourSplit = Mathf.Lerp(colourSplit, 0.008f, 10f*Time.deltaTime);
+        } else if (!onGravityPlatform){
+            colourSplit = Mathf.Lerp(colourSplit, 0f, 10f*Time.deltaTime);
+        }
         PostProcessMat.SetFloat("_Index", indexFloat);
+        PostProcessMat.SetFloat("_OffsetIndex", colourSplit);
     }
 }

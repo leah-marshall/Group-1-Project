@@ -10,6 +10,7 @@ Shader "Hidden/Leaves"
         _SpdX ("Xspeed", Range(-2,2)) = 0.3
         _SpdY ("Yspeed", Range(-2,2)) = 0.1
         _Color ("Color Tone", Color) = (1,1,1,1)
+        _LeavesAlpha ("_Leaves Transparency", Range(0,1)) = 0
 
         [Header(Lines)]
         _Center ("Center", Vector) = (0.5,0.5,0,0)
@@ -137,15 +138,18 @@ Shader "Hidden/Leaves"
             sampler2D _LeavesTex;
             float _SpdX;
             float _SpdY;
+            float _LeavesAlpha;
 
             fixed4 frag (v2f i) : SV_Target
             {
                
-                fixed4 col2 = tex2D(_LeavesTex, half2(i.uv.x + _SpdX *_Time.y, i.uv.y + (_SpdY*_Time.y)));
-                col2 *= _Color;
-                clip(col2.a - 0.5f);
+                fixed4 leaves = tex2D(_LeavesTex, half2(i.uv.x + _SpdX *_Time.y, i.uv.y + (_SpdY*_Time.y)));
+                leaves *= _Color;
+                clip(leaves.a - 0.5);
+                 
+                fixed3 col = leaves.rgb* _LeavesAlpha;
 
-                return col2;
+                return fixed4(col,0);
             }
             ENDCG
         }
