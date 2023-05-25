@@ -26,15 +26,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _RampSize: 1
-    - _RampSmooth: 0.01
-    - _RampStart: 1
+    - _RampSize: 0.1
+    - _RampSmooth: 0.1
+    - _RampStart: 0.3
     - _RampStep: 1
     - _RimSmooth: 0.1
     - _RimThreshold: 0.45
-    - _StrokeWeight: 0.013
+    - _StrokeWeight: 0.033
     m_Colors:
-    - _DarkColor: {r: 0.30980393, g: 0.011764707, b: 0, a: 1}
-    - _LightColor: {r: 0.30980393, g: 0.011764707, b: 0, a: 1}
-    - _RimColor: {r: 0, g: 0, b: 0, a: 1}
+    - _DarkColor: {r: 0.011764707, g: 0.007843138, b: 0.011764707, a: 1}
+    - _LightColor: {r: 0.16862746, g: 0.011764707, b: 0.011764707, a: 1}
+    - _RimColor: {r: 0.4784314, g: 0.4784314, b: 0.5686275, a: 1}
   m_BuildTextureStacks: []
