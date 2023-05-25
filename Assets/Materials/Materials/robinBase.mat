@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: whale
+  m_Name: robinBase
   m_Shader: {fileID: 4800000, guid: 9d3b5b356b464e44897b77c3270c1a8d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3442b2656cfc2c343a505be9ea397880, type: 3}
+        m_Texture: {fileID: 2800000, guid: 540d2947ba92c2a49a95fd8900b64555, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -72,7 +72,7 @@ Material:
     - _RampSize: 0.1
     - _RampSmooth: 0.1
     - _RampStart: 0.3
-    - _RampStep: 3
+    - _RampStep: 1
     - _RimSmooth: 0.1
     - _RimThreshold: 0.45
     - _SmoothnessTextureChannel: 0

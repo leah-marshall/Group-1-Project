@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ballcontroller : MonoBehaviour
 {
     private Transform playerSphere; // stores player sphere object
+    private Rigidbody characterModel;
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
     private Transform TPCam; // stores player camera
     public bool grounded;
@@ -39,6 +40,7 @@ public class ballcontroller : MonoBehaviour
     {
         // spacebar.enabled = false;
         playerSphere = gameObject.GetComponent<Transform>();
+        characterModel = gameObject.transform.GetChild(gameObject.transform.childCount - 1).GetComponent<Rigidbody>();
         playerBody = playerSphere.GetComponent<Rigidbody>();
         TPCam = GameObject.Find("Camera").GetComponent<Transform>();
         onGravityPlatform = false;
@@ -117,8 +119,7 @@ public class ballcontroller : MonoBehaviour
         } else {
         //    spacebar.enabled = false;
             bounce = 0;
-        }
-            
+        }   
         speedCap(forwardMotion, horizontalMotion);
             if (movementEnabled){
                 playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
@@ -267,6 +268,7 @@ public class ballcontroller : MonoBehaviour
     void animationControl(){
         if (grounded){
             animator.SetBool("Grounded", true);
+            animator.SetBool("HighSpeed", false);
         } else {
             animator.SetBool("Grounded", false);
         }
@@ -279,7 +281,7 @@ public class ballcontroller : MonoBehaviour
             animator.SetBool("MovingUp", true);
         }
 
-        if (Mathf.Abs(downwardVelocity.y) > 30f && !grounded){
+        if (Mathf.Abs(downwardVelocity.y) > 25f){
             animator.SetBool("HighSpeed", true);
         } else {
             animator.SetBool("HighSpeed", false);

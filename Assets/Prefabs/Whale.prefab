@@ -68,6 +68,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 586462890248410468, guid: 8463448fed10c1741a52b83778046448, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 586462890248410468, guid: 8463448fed10c1741a52b83778046448, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f2c2ca0ba4e86ae42bf62db43d90450a, type: 2}
@@ -79,26 +83,12 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 64c50553aee40784abd1f6eedd6703c0, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 8463448fed10c1741a52b83778046448, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8463448fed10c1741a52b83778046448, type: 3}
---- !u!1 &695669840179865606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8463448fed10c1741a52b83778046448, type: 3}
-  m_PrefabInstance: {fileID: 389259935366681943}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &237120668206156832
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695669840179865606}
-  m_Material: {fileID: 13400000, guid: 91f1d82c04aa5604db89450c19016664, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.6666666
-  m_Center: {x: 0, y: 2.85, z: 0}
 --- !u!1001 &389259935643087358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +146,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963373, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558431817652963375, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3558431818438316390, guid: b373b7361f29ea848997755c19412730, type: 3}
