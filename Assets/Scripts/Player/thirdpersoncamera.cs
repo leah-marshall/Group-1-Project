@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class thirdpersoncamera : MonoBehaviour
 {
+    /* script adapted from Quinn's MPIE project 
+    Author: Quinn McMahon
+    Location: MPIE Assessment 
+    Accessed: 25/05/23    */
     private Transform playerRoll;
     private ballcontroller playerController;
     private float currentRoll; // stores starting y position of the mouse, then tracks current position via change in y position
@@ -15,13 +19,13 @@ public class thirdpersoncamera : MonoBehaviour
         playerRoll = GameObject.Find("Rotator").GetComponent<Transform>(); // using separate script to control local rotation of camera (do not want to roll player's body)
         playerController = playerRoll.parent.GetComponent<ballcontroller>();
         currentRoll = Input.mousePosition.y;
-        pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
+        pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>(); // NOT FROM ORIGINAL CODE
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!pause_menu.is_paused)
+        if(!pause_menu.is_paused) // NOT FROM ORIGINAL CODE
         {
             Quaternion camRoll = Quaternion.identity; // quaternion to store camera rotation on x axis
             float deltaY = Input.GetAxis("Mouse Y");

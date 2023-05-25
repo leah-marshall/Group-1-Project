@@ -100,14 +100,19 @@ public class ballcontroller : MonoBehaviour
         */
     }
 
+    /* move function (lines 108 - 130) adapted from Quinn's MPIE project 
+    Author: Quinn McMahon
+    Location: MPIE Assessment 
+    Accessed: 25/05/23    */
     
     void move() {
-        brake();
+        brake(); // NOT FROM ORIGINAL CODE
         float forwardMotion = Input.GetAxisRaw("Vertical");
         float horizontalMotion = Input.GetAxisRaw("Horizontal");
-        float bounce = 0;
+        float bounce = 0; // NOT FROM ORIGINAL CODE
+        // LINES 114-122 NOT FROM ORIGINAL CODE
         if (Input.GetKey("space") || Input.GetMouseButton(0)){
-            stopwatch.StartStopwatch();
+            stopwatch.StartStopwatch(); 
          //   spacebar.enabled = true;
             bounce = 1;
             isDiving = true;
@@ -116,11 +121,11 @@ public class ballcontroller : MonoBehaviour
             bounce = 0;
         }
             
-        speedCap(forwardMotion, horizontalMotion);
-            if (movementEnabled){
+        speedCap(forwardMotion, horizontalMotion); // NOT FROM ORIGINAL CODE
+            if (movementEnabled){ // NOT FROM ORIGINAL CODE
                 playerBody.AddForce((playerSphere.forward * forwardMotion * MoveSpeed)
                 + (playerSphere.right * horizontalMotion * MoveSpeed)
-                + (downDirection * bounce * BounceSpeed));
+                + (downDirection * bounce * BounceSpeed)); // ADDED BOUNCE & DOWNWARD VECTOR
             }
             
     }
@@ -186,7 +191,7 @@ public class ballcontroller : MonoBehaviour
     }
 
     /*For lines 197 to 211
-    From MPIE week 5 practical 2 because Quinn it changed from Camera.main.ViewportPointToRay because ray is relative to the player not the camera 
+    From MPIE week 5 practical 2 because Quinn changed it from Camera.main.ViewportPointToRay because ray is relative to the player not the camera 
     Author: MPIE 
     Location: week 5 practical 2
     Accessed: 25/05/23
@@ -205,6 +210,11 @@ public class ballcontroller : MonoBehaviour
     Location: https://forum.unity.com/threads/solved-checking-if-raycasthit-null-not-working.370595/#:~:text=RaycastHit%20is%20a%20struct%2C%20structs,RaycastHit%20info%20has%20been%20set 
     Accessed: 25/05/23
     */
+
+    /* groundCheck function (lines 214 - 227) from Quinn's MPIE project 
+    Author: Quinn McMahon
+    Location: MPIE Assessment 
+    Accessed: 25/05/23    */
 
     void groundCheck(){ // looked at previous script
         LayerMask groundMask = LayerMask.GetMask("Ground"); 
@@ -228,6 +238,11 @@ public class ballcontroller : MonoBehaviour
     Accessed: 25/05/23
     */
 
+    /* camControl function (lines 236 - 250) adapted from Quinn's MPIE project 
+    Author: Quinn McMahon
+    Location: MPIE Assessment 
+    Accessed: 25/05/23    */
+
     void camControl()
     {
         camFOV();
@@ -237,7 +252,7 @@ public class ballcontroller : MonoBehaviour
         currentX += deltaX * sensitivity; // rather than setting camera yaw directly with mouse x pos, track change in positon and multiply by adjustable sensitivity so that cursor can be locked
         camYaw.eulerAngles = new Vector3(playerSphere.rotation.x, currentX, playerSphere.rotation.z); // set camera yaw to keep player's x and z rotation, set rotation about y to mouse x pos
 
-        if (!pause_menu.is_paused)
+        if (!pause_menu.is_paused) // NEW ADDITION
         {
             playerSphere.rotation = camYaw; // rotate camera
         }

@@ -30,7 +30,7 @@ Accessed: 24/05/23
             currentTime += Time.deltaTime;
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        string zeroInsert = ""; // Added by Quinn
+        string zeroInsert = ""; // Lines 33 - 44 Added by Quinn
         if (time.Seconds < 10){
             zeroInsert = "0";
         } 
@@ -43,7 +43,7 @@ Accessed: 24/05/23
             zeroInsertMS2 = "0";
         } 
         timeText.text = time.Minutes.ToString() + ":" + zeroInsert + time.Seconds.ToString() + ":" + zeroInsertMS1 + zeroInsertMS2 + time.Milliseconds.ToString();
-        if (time.Minutes >= 10){ // Added by Quinn
+        if (time.Minutes >= 10){ // Lines 46 - 48 Added by Quinn
             timeText.text = "TIME OUT";
         }
     }
