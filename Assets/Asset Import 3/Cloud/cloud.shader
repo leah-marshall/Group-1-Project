@@ -90,7 +90,7 @@ Shader "Unlit/cloud"
                 float3 worldViewDir = normalize(i.worldViewDir);
                 // sample the texture
  
-                fixed4 col = tex2D(_MainTex, half2(i.uv.x + 0.05* sin(_Time.y), i.uv.y));
+                fixed4 col = tex2D(_MainTex, i.uv);
                 float4 ao = tex2D(_AO, i.uv);
                 clip(col.a - 0.5f); // clip by the alpha channel to produce desired shape
 

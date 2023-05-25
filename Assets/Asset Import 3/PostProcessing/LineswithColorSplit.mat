@@ -34,7 +34,7 @@ Material:
     - _HalfToneFactor: 0.5
     - _Index: 0.0010000003
     - _Lightness: 1
-    - _OffsetIndex: 2.2085615e-10
+    - _OffsetIndex: 0
     - _Radius: 3
     - _Radius1: 0.5
     - _RotateSpd: 10
