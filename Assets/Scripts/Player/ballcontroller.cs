@@ -8,7 +8,6 @@ public class ballcontroller : MonoBehaviour
 {
     private Transform playerSphere; // stores player sphere object
     private Rigidbody playerBody; // stores player's rigidbody component for physics-based movement
-    public Material red, blue;
     private Transform TPCam; // stores player camera
     public bool grounded;
     public bool isDiving;
@@ -33,6 +32,7 @@ public class ballcontroller : MonoBehaviour
     private Material PostProcessMat;
     private float indexFloat = 0;
     private float colourSplit = 0;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -54,12 +54,14 @@ public class ballcontroller : MonoBehaviour
         movementEnabled = true;
         pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
         PostProcessMat = TPCam.GetComponent<PostProcessingScript>().PostProcess;
+        animator = gameObject.transform.GetChild(gameObject.transform.childCount - 1).GetComponent<Animator>();
     }
 
     void Update()
     {
         camControl();
         quickRestart();
+        animationControl();
     }
 
     void FixedUpdate()
@@ -260,5 +262,27 @@ public class ballcontroller : MonoBehaviour
         }
         PostProcessMat.SetFloat("_Index", indexFloat);
         PostProcessMat.SetFloat("_OffsetIndex", colourSplit);
+    }
+
+    void animationControl(){
+        if (grounded){
+            animator.SetBool("Grounded", true);
+        } else {
+            animator.SetBool("Grounded", false);
+        }
+
+        Vector3 downwardVelocity = Vector3.Scale(playerBody.velocity, downDirection);
+
+        if (Mathf.Sign(downwardVelocity.y) > 0){
+            animator.SetBool("MovingUp", false);
+        } else {
+            animator.SetBool("MovingUp", true);
+        }
+
+        if (Mathf.Abs(downwardVelocity.y) > 30f && !grounded){
+            animator.SetBool("HighSpeed", true);
+        } else {
+            animator.SetBool("HighSpeed", false);
+        }
     }
 }
