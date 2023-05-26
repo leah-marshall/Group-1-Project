@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon 2
+  m_Name: Unlit_NewUnlitShader
   m_Shader: {fileID: 4800000, guid: 52dd3c5ccb9227647b594d1ba8e2e21b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -24,22 +24,17 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _rampTex:
-        m_Texture: {fileID: 2800000, guid: 6d04e170a0d9d3f4d8094c54ec86dc1d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _RampSize: 0.1
     - _RampSmooth: 0.1
     - _RampStart: 0.3
-    - _RampStep: 1
+    - _RampStep: 3
     - _RimSmooth: 0.1
-    - _RimThreshold: 1
-    - _StrokeWeight: 0.004
+    - _RimThreshold: 0.177
+    - _StrokeWeight: 0.0001
     m_Colors:
-    - _DarkColor: {r: 0.33333334, g: 0, b: 0.5294118, a: 1}
-    - _LightColor: {r: 0.33333334, g: 0, b: 0.5294118, a: 1}
-    - _LightColor1: {r: 0.33333334, g: 0, b: 0.5294118, a: 1}
-    - _RimColor: {r: 0.33333334, g: 0, b: 0.5294118, a: 1}
+    - _DarkColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+    - _LightColor1: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
