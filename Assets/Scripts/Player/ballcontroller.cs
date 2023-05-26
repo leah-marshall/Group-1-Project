@@ -261,6 +261,7 @@ public class ballcontroller : MonoBehaviour
         } else if (!onGravityPlatform){
             colourSplit = Mathf.Lerp(colourSplit, 0f, 10f*Time.deltaTime);
         }
+    
         PostProcessMat.SetFloat("_Index", indexFloat);
         PostProcessMat.SetFloat("_OffsetIndex", colourSplit);
     }

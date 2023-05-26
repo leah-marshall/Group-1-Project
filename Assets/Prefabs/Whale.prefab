@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1055242499787913325, guid: 8463448fed10c1741a52b83778046448, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 586462890248410468, guid: 8463448fed10c1741a52b83778046448, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -78,6 +82,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8463448fed10c1741a52b83778046448, type: 3}
       propertyPath: m_Name
       value: whale animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8463448fed10c1741a52b83778046448, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 8463448fed10c1741a52b83778046448, type: 3}
       propertyPath: m_Controller
@@ -96,12 +104,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 12991868, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 540243674, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: PostProcess
+      value: 
+      objectReference: {fileID: 2100000, guid: c840409b9f6c09d4cabea10e2434963a, type: 2}
+    - target: {fileID: 841813622539239358, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 841813622546089201, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 841813623263758596, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963369, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: pause_menu
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963371, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_Name
+      value: Whale
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558431817652963371, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558431817652963371, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963373, guid: b373b7361f29ea848997755c19412730, type: 3}
@@ -152,9 +188,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3558431818438316387, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3558431818438316390, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: pause_menu
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558431819651097097, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136971749648796667, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673048889951172319, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673048890959609624, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b373b7361f29ea848997755c19412730, type: 3}

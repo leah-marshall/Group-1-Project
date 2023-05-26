@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Toon 1
-  m_Shader: {fileID: 4800000, guid: b3ddd93909a5d0341ab86e3d19b111f7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 52dd3c5ccb9227647b594d1ba8e2e21b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -24,6 +24,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 4cfbb0cebda2a7d478dff01a29a7d02d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _rampTex:
+        m_Texture: {fileID: 2800000, guid: 6d04e170a0d9d3f4d8094c54ec86dc1d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _RampSize: 0.1
@@ -36,5 +40,6 @@ Material:
     m_Colors:
     - _DarkColor: {r: 0.3882353, g: 0.3519652, b: 0.27450982, a: 1}
     - _LightColor: {r: 0.7254902, g: 0.37254903, b: 0.4560202, a: 1}
-    - _RimColor: {r: 1, g: 0.71132076, b: 0.71132076, a: 1}
+    - _LightColor1: {r: 0.9811321, g: 0.596084, b: 0.596084, a: 1}
+    - _RimColor: {r: 0.8773585, g: 0.4750979, b: 0.4750979, a: 1}
   m_BuildTextureStacks: []

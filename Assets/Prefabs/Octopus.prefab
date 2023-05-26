@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 8351465908627393795}
   - component: {fileID: 8351465908627393820}
   - component: {fileID: 8351465906692761877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Octopus
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 4793038487626935278}
   - component: {fileID: 4793038487626935274}
   - component: {fileID: 8351465907436031062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PostProcess: {fileID: 2100000, guid: c840409b9f6c09d4cabea10e2434963a, type: 2}
   pixelSize: 1
-  radius: 3
   spd: 10
   myCam: {fileID: 4793038487626935277}
 --- !u!1 &4793038489097721989
@@ -326,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4793038489097721988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,6 +403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextPow
       objectReference: {fileID: 0}
+    - target: {fileID: 841813622676992261, guid: ad4cb105471809247a7baf9d29760e72, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 841813622676992263, guid: ad4cb105471809247a7baf9d29760e72, type: 3}
       propertyPath: looping
       value: 0
@@ -411,6 +414,14 @@ PrefabInstance:
     - target: {fileID: 841813622676992263, guid: ad4cb105471809247a7baf9d29760e72, type: 3}
       propertyPath: moveWithTransform
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841813622677555786, guid: ad4cb105471809247a7baf9d29760e72, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 841813623126788031, guid: ad4cb105471809247a7baf9d29760e72, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad4cb105471809247a7baf9d29760e72, type: 3}
@@ -514,6 +525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing
       objectReference: {fileID: 0}
+    - target: {fileID: 4136971749083500887, guid: 1b65fecbcf0af6b47aaf86dc66b4b6a5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b65fecbcf0af6b47aaf86dc66b4b6a5, type: 3}
 --- !u!4 &1071829880967949361 stripped
@@ -531,6 +546,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_Name
       value: BlobShadowProjector
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_RootOrder
@@ -666,6 +685,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1055242499787913325, guid: 6113450fe843bc24699949290c338aa5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 586462890248410468, guid: 6113450fe843bc24699949290c338aa5, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -677,6 +700,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6113450fe843bc24699949290c338aa5, type: 3}
       propertyPath: m_Name
       value: octopus animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6113450fe843bc24699949290c338aa5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6113450fe843bc24699949290c338aa5, type: 3}
       propertyPath: m_Controller
@@ -700,6 +727,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4793038487296602785}
     m_Modifications:
+    - target: {fileID: 5673048890086659493, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5673048890086659494, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
       propertyPath: simulationSpeed
       value: 3
@@ -715,6 +746,10 @@ PrefabInstance:
     - target: {fileID: 5673048891091491938, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
       propertyPath: m_Name
       value: VFXsparkle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673048891091491938, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5673048891091491941, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
       propertyPath: m_RootOrder

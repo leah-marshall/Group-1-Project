@@ -1,4 +1,4 @@
-Shader "Hidden/NewImageEffectShader1"
+Shader "Hidden/SpdLineswithSplit"
 {
     Properties
     {
