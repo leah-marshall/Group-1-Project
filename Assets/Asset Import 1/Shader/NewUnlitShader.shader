@@ -188,6 +188,11 @@ Shader "Unlit/NewUnlitShader"
             ENDCG
         }
 
+        /* Point Light Pass from Zewuzi's MPIE project
+           Author: Zewuzi 
+           Location: MPIE Assessment
+           Accessed: 25/05/2023*/
+
         Pass
         {
             Tags {

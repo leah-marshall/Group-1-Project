@@ -22,6 +22,11 @@ Shader "Unlit/NewUnlitShader"
         Tags { "RenderType"="Opaque" 
                 }
         LOD 100
+
+        // Stroke Pass from Zewuzi's MPIE project
+        // Author: Zewuzi
+        // Location: Zewuzi's MPIE project
+        // Accessed: 25/05/2023
  
         Pass  // stroke
         {

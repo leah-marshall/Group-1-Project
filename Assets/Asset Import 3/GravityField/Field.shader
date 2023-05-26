@@ -15,6 +15,13 @@ Shader "Unlit/Field"
 
 	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" "DisableBatching"="True"} //Transparent
 	
+
+	/*  Depth calculation
+	    Author: Porco23
+		Location: https://github.com/Porco24/UnityShaderEnergyShield/blob/master/ShaderTest/Assets/Shader/XiangJiaoGaoGuang.shader
+		Accessed: 25/05/2023
+	*/
+
 	Pass{
 		Tags { "LightMode"="ForwardBase" }	
 		
