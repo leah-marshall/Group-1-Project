@@ -17,13 +17,13 @@ public class BreakablePlatform : MonoBehaviour
     // Combined Zewuzi's New Behaviour Script w/ Leah's Breakable platform scripts
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Camera").transform.parent.parent.gameObject;
         // rb = GetComponent<Rigidbody>();
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.name == "Player"){
+        if (other.tag == "Player"){
             if(player.GetComponent<ballcontroller>().isDiving)
             {
                 rb1.gameObject.transform.parent = null;

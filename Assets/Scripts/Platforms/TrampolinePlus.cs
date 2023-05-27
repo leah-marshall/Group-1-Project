@@ -9,11 +9,11 @@ public class TrampolinePlus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerBody = GameObject.Find("Player").GetComponent<Rigidbody>();
+        playerBody = GameObject.Find("Camera").transform.parent.parent.GetComponent<Rigidbody>();
     }
 
     void OnCollisionEnter(Collision other){
-        if (other.collider.name == "Player"){
+        if (other.collider.tag == "Player"){
             playerBody.AddForce(gameObject.transform.up * rebound * Mathf.Sign(playerBody.velocity.y), ForceMode.Impulse);
         }
     } 

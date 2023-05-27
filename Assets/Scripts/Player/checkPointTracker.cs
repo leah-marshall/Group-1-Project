@@ -8,7 +8,7 @@ public class checkPointTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentCheckPoint = GameObject.Find("Player").transform.position;
+        currentCheckPoint = GameObject.Find("Camera").transform.parent.parent.position;
     }
 
     void OnTriggerEnter(Collider other){
