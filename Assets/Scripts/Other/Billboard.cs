@@ -9,7 +9,7 @@ public class Billboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        target_camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
