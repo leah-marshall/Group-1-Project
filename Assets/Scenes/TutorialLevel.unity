@@ -10180,6 +10180,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1950150074}
     m_Modifications:
+    - target: {fileID: 76738006, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018206239, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952409183348869482, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8488087104760121601, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
       propertyPath: m_Name
       value: screen (2)
@@ -18006,6 +18018,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1950150074}
     m_Modifications:
+    - target: {fileID: 76738006, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018206239, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8488087104760121601, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
       propertyPath: m_Name
       value: screen (1)
@@ -23034,7 +23054,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -23169,7 +23189,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -23581,6 +23601,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1950150074}
     m_Modifications:
+    - target: {fileID: 76738006, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018206239, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8488087104760121601, guid: ec8b434ff992c7c4b8961e7de60e1570, type: 3}
       propertyPath: m_Name
       value: screen
@@ -24982,6 +25010,14 @@ PrefabInstance:
     - target: {fileID: 3067781408571802526, guid: 42c42992df06a0a439d5c3b99ec1df4d, type: 3}
       propertyPath: m_Name
       value: rscreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870607162954458953, guid: 42c42992df06a0a439d5c3b99ec1df4d, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870607164780456064, guid: 42c42992df06a0a439d5c3b99ec1df4d, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42c42992df06a0a439d5c3b99ec1df4d, type: 3}
