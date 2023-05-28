@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 754763991314958070}
   - component: {fileID: 754763989848023807}
   m_Layer: 10
-  m_Name: BearUnfinished
+  m_Name: Bear
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5673048891091491941, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5673048891091491941, guid: 990d954f5409b4940a603f432ded1a40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -717,15 +717,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.969608
+      value: 17.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.969608
+      value: 17.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 17.969608
+      value: 17.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -733,11 +733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.839
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.070126
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -771,6 +771,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3160917678857740142, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3160917678857740142, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d62d925307411e4599131b2ce91b4c4, type: 2}
     - target: {fileID: 919132149155446097, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_Name
       value: bearSmooth
@@ -778,14 +786,14 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9000000, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
     - target: {fileID: 5866666021909216657, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0dce368b285462e42a0d4a98aa7f16e3, type: 2}
     - target: {fileID: 5866666021909216657, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6829333093618665122, guid: 617e9c625670e4644a2ab130f19c02dc, type: 3}
       propertyPath: m_Materials.Array.data[0]

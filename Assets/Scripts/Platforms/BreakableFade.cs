@@ -21,7 +21,7 @@ public class BreakableFade : MonoBehaviour
     void Update()
     {
         if (fading){
-            clipAmnt = Mathf.Lerp(clipAmnt, 1f, 1f * Time.deltaTime);
+            clipAmnt = Mathf.Lerp(clipAmnt, 1f, 0.5f * Time.deltaTime);
             shardMat.material.SetFloat("_Clip", clipAmnt);
         }
 
