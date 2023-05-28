@@ -26,7 +26,7 @@ public class GravityPlatform : MonoBehaviour
         } else if (backwardGravity){
             gravityDirection = new Vector3 (0, 0, 30*gravityMultiplier);
         }
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        player = GameObject.Find("Camera").transform.parent.parent.GetComponent<Transform>();
         playerBody = player.GetComponent<Rigidbody>();
         playerController = player.GetComponent<ballcontroller>();
     }
@@ -41,7 +41,7 @@ public class GravityPlatform : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
             Physics.gravity = new Vector3(0, 0, 0);
             Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
@@ -54,7 +54,7 @@ public class GravityPlatform : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
             playerController.downDirection = Vector3.down;
             Physics.gravity = new Vector3(0, -30f, 0);

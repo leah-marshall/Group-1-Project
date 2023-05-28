@@ -9,7 +9,7 @@ public class Fan : MonoBehaviour
 
 
     void OnTriggerStay(Collider other){
-        if (other.name == "Player" || other.tag == "Box")
+        if (other.tag == "Player" || other.tag == "Box")
         {
             
             other.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * fanStrength);
@@ -17,7 +17,7 @@ public class Fan : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if (other.name == "Player" || other.tag == "Box")
+        if (other.tag == "Player" || other.tag == "Box")
         {
             Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
             other.GetComponent<Rigidbody>().velocity = Vector3.SmoothDamp(other.GetComponent<Rigidbody>().velocity, 

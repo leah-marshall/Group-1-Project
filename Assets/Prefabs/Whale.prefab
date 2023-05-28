@@ -104,6 +104,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7483326, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 12991868, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -146,15 +150,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963373, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963373, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963373, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.25
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963373, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_LocalRotation.w

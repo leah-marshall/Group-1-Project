@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 210031513}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,8 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8ef0cc2e7cc9f4ca73b31decd3a3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: 6367d363c6e78da4e896f5a772cb3bbe, type: 2}
-  blue: {fileID: 2100000, guid: 98f5f91a397b9084190806bc718c1fc6, type: 2}
   grounded: 0
   isDiving: 0
   groundedDist: 2
@@ -315,8 +313,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PostProcess: {fileID: 2100000, guid: c840409b9f6c09d4cabea10e2434963a, type: 2}
   pixelSize: 1
-  index: 1
-  radius: 3
   spd: 10
   myCam: {fileID: 3558431818438316385}
 --- !u!1 &3558431819651097097

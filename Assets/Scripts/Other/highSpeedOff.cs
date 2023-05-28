@@ -9,18 +9,18 @@ public class highSpeedOff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<ballcontroller>();
+        player = GameObject.Find("Camera").transform.parent.parent.GetComponent<ballcontroller>();
     }
 
 
     void OnTriggerEnter(Collider other){
-        if (other.name == "Player"){
+        if (other.tag == "Player"){
             player.highSpeed = on;
         }
     }
 
      void OnTriggerStay(Collider other){
-        if (other.name == "Player"){
+        if (other.tag == "Player"){
             player.highSpeed = on;
         }
     }

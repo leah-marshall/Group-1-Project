@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39540225, g: 0.2283802, b: 0.29990682, a: 1}
+  m_IndirectSpecularColor: {r: 0.39542893, g: 0.22839624, b: 0.2999, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1101,7 +1101,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -1741,7 +1741,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -2231,7 +2231,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -3523,7 +3523,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -4096,7 +4096,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -4717,7 +4717,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -5567,7 +5567,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -5926,7 +5926,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -6547,7 +6547,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -7955,7 +7955,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -8696,7 +8696,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -8894,7 +8894,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -11538,7 +11538,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -11905,7 +11905,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -13285,7 +13285,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -14013,7 +14013,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -16004,7 +16004,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -16357,7 +16357,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -16696,7 +16696,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -21299,7 +21299,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -21310,6 +21310,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1183525669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7257710704933697286, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
+  m_PrefabInstance: {fileID: 1980375084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1183525675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183525669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19999996, y: 0.20000003, z: 0.20000003}
+  m_Center: {x: 0.00000023841858, y: -0.0000019073486, z: 0}
 --- !u!4 &1191045331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5069143160194463668, guid: 84503ca6459c31040937e681adc3d961, type: 3}
@@ -21905,7 +21923,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -22117,7 +22135,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -22725,7 +22743,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -23788,7 +23806,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -24693,7 +24711,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -25177,7 +25195,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -28657,7 +28675,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -29069,7 +29087,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -30820,7 +30838,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -31543,7 +31561,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -31658,7 +31676,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -31865,7 +31883,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -32624,7 +32642,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -32739,7 +32757,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -32854,7 +32872,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -34079,7 +34097,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -34428,7 +34446,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -34517,15 +34535,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7257710704933697285, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 38
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 7257710704933697285, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 7257710704933697285, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7257710704933697285, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34551,6 +34569,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7257710704933697285, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257710704933697289, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: d187eced761355f4f966b5f5879b27bc, type: 3}
+    - target: {fileID: 7257710704933697290, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5f238f56826eb244864975154af0266, type: 2}
     - target: {fileID: 7257710705004761250, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.170274
@@ -34563,7 +34593,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -13.30938
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7257710704933697291, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48fabbed7ebb0714a8b3580e2cc9e59d, type: 3}
 --- !u!4 &1990944134 stripped
 Transform:
@@ -35697,7 +35728,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -35817,7 +35848,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -36037,7 +36068,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -37896,7 +37927,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -38031,7 +38062,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -38670,7 +38701,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -38805,7 +38836,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -39151,7 +39182,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1
@@ -39246,7 +39277,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 73.25, y: 48.3}
   m_BounceIntensity: 1

@@ -14,8 +14,8 @@ public class TiltPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerBody = GameObject.Find("Player").GetComponent<Rigidbody>();
-        player = GameObject.Find("Player").GetComponent<ballcontroller>();
+        playerBody = GameObject.Find("Camera").transform.parent.parent.GetComponent<Rigidbody>();
+        player = GameObject.Find("Camera").transform.parent.parent.GetComponent<ballcontroller>();
         StopTimeSave = player.StopTime;
         StopTimeTimer = 60;
         StopTimeIncrease = false;
@@ -35,12 +35,12 @@ public class TiltPlatform : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other){
-        if (other.collider.name == "Player"){
+        if (other.collider.tag == "Player"){
             playerBody.AddForce(gameObject.transform.up * rebound, ForceMode.Impulse);
         }
     }
     void OnCollisionExit(Collision other){
-        if (other.collider.name == "Player"){
+        if (other.collider.tag == "Player"){
             player.StopTime = 0.5f;
             StopTimeIncrease = true;
             playerBody.AddForce(gameObject.transform.up * rebound, ForceMode.Impulse);
