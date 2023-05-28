@@ -1,11 +1,26 @@
 fileFormatVersion: 2
-guid: 617e9c625670e4644a2ab130f19c02dc
+guid: dffbabe73920c3c439abb52170346ec0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: Take 001
+      74: -5985732819648674319
+    second: Armature.001|bear air down pose
+  - first:
+      74: 4595287892801611392
+    second: Armature.001|bear air up pose
+  - first:
+      74: -5706369360233406437
+    second: Armature.001|bear down
+  - first:
+      74: -1890224772215818897
+    second: Armature.001|bear idle
+  - first:
+      74: -3396132989018823978
+    second: Armature.001|bear up
+  - first:
+      74: -7888106709032993177
+    second: Armature.001|Sphere.002Action.002
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -16,7 +31,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
