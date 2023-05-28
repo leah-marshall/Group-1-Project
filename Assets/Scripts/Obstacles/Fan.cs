@@ -5,13 +5,13 @@ using UnityEngine;
 public class Fan : MonoBehaviour
 {
     [SerializeField] private float fanStrength;
+
     
 
 
     void OnTriggerStay(Collider other){
         if (other.tag == "Player" || other.tag == "Box")
         {
-            
             other.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * fanStrength);
         }
     }

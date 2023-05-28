@@ -34,6 +34,7 @@ public class ballcontroller : MonoBehaviour
     private float indexFloat = 0;
     private float colourSplit = 0;
     private Animator animator;
+    private BounceAudio feedback;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,7 @@ public class ballcontroller : MonoBehaviour
         pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
         PostProcessMat = TPCam.GetComponent<PostProcessingScript>().PostProcess;
         animator = gameObject.transform.GetChild(gameObject.transform.childCount - 1).GetComponent<Animator>();
+        feedback = gameObject.GetComponent<BounceAudio>();
     }
 
     void Update()
@@ -214,6 +216,7 @@ public class ballcontroller : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isDiving = false;
+        feedback.cycleSounds();
     }
 
     void camFOV(){
@@ -251,14 +254,17 @@ public class ballcontroller : MonoBehaviour
     void speedLines(){
         if (playerBody.velocity.magnitude > MaxSpeed*2.25f){
             indexFloat = Mathf.Lerp(indexFloat, 1.0f, 10f * Time.deltaTime);
+            feedback.wooshEffect();
         } else {
             indexFloat = Mathf.Lerp(indexFloat, 0.001f, 10f * Time.deltaTime);
+            feedback.wooshStop();
         }
 
         if (onGravityPlatform){
-            Debug.Log("true");
+            feedback.gravityEffect();
             colourSplit = Mathf.Lerp(colourSplit, 0.008f, 10f*Time.deltaTime);
         } else if (!onGravityPlatform){
+            feedback.gravityStop();
             colourSplit = Mathf.Lerp(colourSplit, 0f, 10f*Time.deltaTime);
         }
     

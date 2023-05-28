@@ -12,12 +12,14 @@ public class BreakablePlatform : MonoBehaviour
     [SerializeField] private BreakableFade rb1Fade, rb2Fade, rb3Fade, rb4Fade, rb5Fade;
     // private Rigidbody rb;
     private GameObject player;
+    private BounceAudio feedback;
     
 
     // Combined Zewuzi's New Behaviour Script w/ Leah's Breakable platform scripts
     void Start()
     {
         player = GameObject.Find("Camera").transform.parent.parent.gameObject;
+        feedback = player.GetComponent<BounceAudio>();
         // rb = GetComponent<Rigidbody>();
     }
 
@@ -26,6 +28,7 @@ public class BreakablePlatform : MonoBehaviour
         if (other.tag == "Player"){
             if(player.GetComponent<ballcontroller>().isDiving)
             {
+                feedback.shatterEffect();
                 rb1.gameObject.transform.parent = null;
                 rb2.gameObject.transform.parent = null;
                 rb3.gameObject.transform.parent = null;

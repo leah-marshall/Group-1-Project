@@ -10,6 +10,7 @@ public class TiltPlatform : MonoBehaviour
     private float StopTimeTimer;
     private bool StopTimeIncrease;
     [SerializeField] private float rebound;
+    private BounceAudio feedback;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class TiltPlatform : MonoBehaviour
         StopTimeSave = player.StopTime;
         StopTimeTimer = 60;
         StopTimeIncrease = false;
+        feedback = player.gameObject.GetComponent<BounceAudio>();
     }
 
     // Update is called once per frame
@@ -36,6 +38,7 @@ public class TiltPlatform : MonoBehaviour
 
     void OnCollisionEnter(Collision other){
         if (other.collider.tag == "Player"){
+            feedback.tiltEffect();
             playerBody.AddForce(gameObject.transform.up * rebound, ForceMode.Impulse);
         }
     }

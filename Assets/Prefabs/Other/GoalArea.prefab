@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4e12dbc06dd449b9fa635f0b5bff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalClip: {fileID: 8300000, guid: 19d74ceb1a9643c4cb7dc976306eac56, type: 3}
 --- !u!1 &3332412452689602532
 GameObject:
   m_ObjectHideFlags: 0
