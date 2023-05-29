@@ -13,6 +13,10 @@ public class ComicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(animalStore.animal == 0)
+        {
+            All_Panels = GameObject.Find("cat_images");
+        }
         total_panels = All_Panels.transform.childCount;
         Panels = new GameObject[total_panels];
         for(int i = 0; i < total_panels; i++)
@@ -21,6 +25,7 @@ public class ComicManager : MonoBehaviour
         }
 
         current_panel = 0;
+        Panels[0].SetActive(true);
     }
 
     // Update is called once per frame
@@ -39,7 +44,6 @@ public class ComicManager : MonoBehaviour
             Panels[current_panel].SetActive(false);
             Panels[current_panel + 1].SetActive(true);
             current_panel++;
-            Debug.Log("click!");
         }
         else
         {

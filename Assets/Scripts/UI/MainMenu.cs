@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     //press start -> change to first scene
+    private void Start()
+    {
+        animalStore.animal = -1;
+    }
+
     public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
