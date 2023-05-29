@@ -35,6 +35,7 @@ public class ballcontroller : MonoBehaviour
     private float colourSplit = 0;
     private Animator animator;
     private BounceAudio feedback;
+    private AudioSource music;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,8 @@ public class ballcontroller : MonoBehaviour
         PostProcessMat = TPCam.GetComponent<PostProcessingScript>().PostProcess;
         animator = gameObject.transform.GetChild(gameObject.transform.childCount - 1).GetComponent<Animator>();
         feedback = gameObject.GetComponent<BounceAudio>();
+        music = GameObject.Find("MusicTemp").GetComponent<AudioSource>();
+        music.Stop();
     }
 
     void Update()
@@ -115,6 +118,9 @@ public class ballcontroller : MonoBehaviour
         float bounce = 0;
         if (Input.GetKey("space") || Input.GetMouseButton(0)){
             stopwatch.StartStopwatch();
+            if (!music.isPlaying){
+                music.Play();
+            }
          //   spacebar.enabled = true;
             bounce = 1;
             isDiving = true;
@@ -169,6 +175,9 @@ public class ballcontroller : MonoBehaviour
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
             }
             if (forwardMotion != 0 || horizontalMotion != 0){
+                if (!music.isPlaying){
+                    music.Play();
+                }
                 stopwatch.StartStopwatch();
             }
     }
