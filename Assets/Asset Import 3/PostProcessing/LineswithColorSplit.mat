@@ -32,9 +32,9 @@ Material:
     m_Floats:
     - _Density: 10
     - _HalfToneFactor: 0.5
-    - _Index: 0.0010000003
+    - _Index: 0.9999999
     - _Lightness: 1
-    - _OffsetIndex: 0.0079999985
+    - _OffsetIndex: 0
     - _Radius: 6
     - _Radius1: 0.5
     - _RotateSpd: 10

@@ -6855,6 +6855,7 @@ GameObject:
   - component: {fileID: 505263505}
   - component: {fileID: 505263504}
   - component: {fileID: 505263503}
+  - component: {fileID: 505263506}
   m_Layer: 5
   m_Name: TimeText
   m_TagString: Untagged
@@ -6873,9 +6874,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 614023167}
   m_Father: {fileID: 1569443234}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 0.95, y: 1}
@@ -6991,6 +6993,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505263501}
   m_CullTransparentMesh: 1
+--- !u!95 &505263506
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505263501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 057d04da1f924a542a905c8bd7a52de6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &506890892
 GameObject:
   m_ObjectHideFlags: 0
@@ -8367,15 +8389,15 @@ RectTransform:
   m_GameObject: {fileID: 614023166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.027186, y: 1.5768063, z: 1}
+  m_LocalScale: {x: 2.6757288, y: 0.5256021, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1569443234}
+  m_Father: {fileID: 505263502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 573, y: 353.00012}
+  m_AnchoredPosition: {x: 66.33331, y: -15.666626}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &614023168
@@ -23830,7 +23852,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 614023167}
   - {fileID: 505263502}
   m_Father: {fileID: 0}
   m_RootOrder: 7

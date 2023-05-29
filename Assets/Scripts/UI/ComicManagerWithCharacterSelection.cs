@@ -24,7 +24,7 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
     private int total_panels = 0;
     public int total_panels_selected = 0;
     public bool is_selected;
-    public int characterPanel;
+    static public int characterPanel;
     [SerializeField] GameObject character_selection;
     private int CAT = 0;
     private int PUFF = 1;
@@ -67,6 +67,7 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
 
         current_panel = 0;
         Panels[0].SetActive(true);
+        updateCharacterPanel();
     }
 
     // Update is called once per frame

@@ -9,6 +9,7 @@ public class Goal : MonoBehaviour
     private ballcontroller player;
     private AudioSource music;
     [SerializeField] private AudioClip goalClip;
+    private Animator timeAnimation;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class Goal : MonoBehaviour
         playerBody = GameObject.Find("Camera").transform.parent.parent.GetComponent<Rigidbody>();
         player = GameObject.Find("Camera").transform.parent.parent.GetComponent<ballcontroller>();
         music = GameObject.Find("MusicTemp").GetComponent<AudioSource>();
+        timeAnimation = stopwatch.gameObject.GetComponent<Animator>();
     }
 
     void OnTriggerEnter(Collider other){
@@ -23,6 +25,7 @@ public class Goal : MonoBehaviour
             music.loop = false;
             music.Stop();
             music.PlayOneShot(goalClip);
+            timeAnimation.Play("timeCentered");
             Vector3 velocityRef = Vector3.zero; // referenced unity docs https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html + scriptkid's comment https://forum.unity.com/threads/stopping-rigidbody-on-a-dime.263743/
             playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, 0), ref velocityRef, 0.1f); 
             player.movementEnabled = false;

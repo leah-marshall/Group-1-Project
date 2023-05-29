@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stopwatch : MonoBehaviour // referenced this video for stopwatch script https://www.youtube.com/watch?v=HLz_k6DSQvU&ab_channel=CocoCode
 {
@@ -49,5 +50,11 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
 
     public void StopStopwatch(){
         stopwatchActive = false;
+    }
+
+     public void nextScene(){
+        Physics.gravity = new Vector3(0, -30f, 0);
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

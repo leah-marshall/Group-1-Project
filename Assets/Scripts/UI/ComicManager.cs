@@ -13,7 +13,7 @@ public class ComicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch(animalStore.animal)
+        switch(characterTracker.animalToInstance)
         {
             case 0:
                 All_Panels = GameObject.Find("cat_images");

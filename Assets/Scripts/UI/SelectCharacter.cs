@@ -15,7 +15,7 @@ public class SelectCharacter : MonoBehaviour
     public void cat()
     {
      //   animalStore.animal = 0;
-        comic_manager.characterPanel = 0;
+        ComicManagerWithCharacterSelection.characterPanel = 0;
         characterTracker.animalToInstance = 0;
         updateComic();
         Debug.Log("0");
@@ -24,7 +24,7 @@ public class SelectCharacter : MonoBehaviour
     public void puff()
     {
     //    animalStore.animal = 1;
-        comic_manager.characterPanel = 1;
+        ComicManagerWithCharacterSelection.characterPanel = 1;
         characterTracker.animalToInstance = 1;
         updateComic();
         Debug.Log("1");
@@ -33,7 +33,7 @@ public class SelectCharacter : MonoBehaviour
     public void octo()
     {
     //    animalStore.animal = 2;
-        comic_manager.characterPanel = 2;
+        ComicManagerWithCharacterSelection.characterPanel = 2;
         characterTracker.animalToInstance = 2;
         updateComic();
         Debug.Log("2");
@@ -42,7 +42,7 @@ public class SelectCharacter : MonoBehaviour
     public void bird()
     {
     //    animalStore.animal = 3;
-        comic_manager.characterPanel = 3;
+        ComicManagerWithCharacterSelection.characterPanel = 3;
         characterTracker.animalToInstance = 3;
         updateComic();
         Debug.Log("3");
@@ -51,7 +51,7 @@ public class SelectCharacter : MonoBehaviour
     public void bear()
     {
      //   animalStore.animal = 4;
-        comic_manager.characterPanel = 4;
+        ComicManagerWithCharacterSelection.characterPanel = 4;
         characterTracker.animalToInstance = 4;
         updateComic();
          Debug.Log("4");
@@ -60,7 +60,7 @@ public class SelectCharacter : MonoBehaviour
     public void whale()
     {
      //   animalStore.animal = 5;
-        comic_manager.characterPanel = 5;
+        ComicManagerWithCharacterSelection.characterPanel = 5;
         characterTracker.animalToInstance = 5;
         updateComic();
         Debug.Log("5");
