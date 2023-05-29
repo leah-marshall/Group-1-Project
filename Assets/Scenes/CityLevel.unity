@@ -3357,7 +3357,7 @@ Animator:
   m_GameObject: {fileID: 196305512}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 057d04da1f924a542a905c8bd7a52de6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2708db53ddaf096479b8d4cd6d5ebfd5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11817,7 +11817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4435051772218893037, guid: 7d1bd9d1b1d770b4c94bcdfbed177585, type: 3}
       propertyPath: rebound
-      value: 45
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5411448011556903355, guid: 7d1bd9d1b1d770b4c94bcdfbed177585, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -18529,7 +18529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4435051772218893037, guid: 7d1bd9d1b1d770b4c94bcdfbed177585, type: 3}
       propertyPath: rebound
-      value: 45
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5411448011556903355, guid: 7d1bd9d1b1d770b4c94bcdfbed177585, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -34062,7 +34062,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42, y: -15.666687}
+  m_AnchoredPosition: {x: -39.8, y: -9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1942289606

@@ -412,6 +412,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7483326, guid: b373b7361f29ea848997755c19412730, type: 3}
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 3558431817652963371, guid: b373b7361f29ea848997755c19412730, type: 3}
       propertyPath: m_Name
       value: Player
@@ -12740,7 +12744,7 @@ Animator:
   m_GameObject: {fileID: 870580178}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 057d04da1f924a542a905c8bd7a52de6, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8a94175f5633ea4b858bd5cd3129523, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -14988,7 +14992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 66.33331, y: -15.666626}
+  m_AnchoredPosition: {x: 68, y: -13}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1044278780
