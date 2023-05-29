@@ -13,10 +13,28 @@ public class ComicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(animalStore.animal == 0)
+        switch(animalStore.animal)
         {
-            All_Panels = GameObject.Find("cat_images");
+            case 0:
+                All_Panels = GameObject.Find("cat_images");
+                break;
+            case 1:
+                All_Panels = GameObject.Find("puff_images");
+                break;
+            case 2:
+                All_Panels = GameObject.Find("octo_images");
+                break;
+            case 3:
+                All_Panels = GameObject.Find("bird_images");
+                break;
+            case 4:
+                All_Panels = GameObject.Find("bear_images");
+                break;
+            case 5:
+                All_Panels = GameObject.Find("whale_images");
+                break;
         }
+
         total_panels = All_Panels.transform.childCount;
         Panels = new GameObject[total_panels];
         for(int i = 0; i < total_panels; i++)

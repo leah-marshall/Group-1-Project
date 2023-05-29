@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4d0cffdba546d6141b63dcd57ff0698f
   - enabled: 1
@@ -14,10 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
     guid: c47e2a0d8ce961e4e823ea0901720451
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Comic2.unity
+    guid: 3bfbfffbfba05a94b98090100304c703
+  - enabled: 1
     path: Assets/Scenes/CityLevel.unity
     guid: 51da914781e8d2b4f85b88859f067a2d
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Comic3.unity
+    guid: 876afd506a855eb4ea8928a3507b7af8
+  - enabled: 1
     path: Assets/Scenes/FinalLevel.unity
     guid: 5c8160ec93599a74db9d640447962da6
   - enabled: 0

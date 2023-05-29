@@ -101,42 +101,49 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
                     Selected_Panels[0] = PanelsC[0];
                     Selected_Panels[1] = PanelsC[1];
                     Selected_Panels[2] = PanelsC[2];
+                    Selected_Panels[3] = PanelsC[3];
                     is_selected = true;
                     break;
                 case 1:
                     Selected_Panels[0] = PanelsP[0];
                     Selected_Panels[1] = PanelsP[1];
                     Selected_Panels[2] = PanelsP[2];
+                    Selected_Panels[3] = PanelsP[3];
                     is_selected = true;
                     break;
                 case 2:
                     Selected_Panels[0] = PanelsO[0];
                     Selected_Panels[1] = PanelsO[1];
                     Selected_Panels[2] = PanelsO[2];
+                    Selected_Panels[3] = PanelsO[3];
                     is_selected = true;
                     break;
                 case 3:
                     Selected_Panels[0] = PanelsBi[0];
                     Selected_Panels[1] = PanelsBi[1];
                     Selected_Panels[2] = PanelsBi[2];
+                    Selected_Panels[3] = PanelsBi[3];
                     is_selected = true;
                     break;
                 case 4:
                     Selected_Panels[0] = PanelsBe[0];
                     Selected_Panels[1] = PanelsBe[1];
                     Selected_Panels[2] = PanelsBe[2];
+                    Selected_Panels[3] = PanelsBe[3];
                     is_selected = true;
                     break;
                 case 5:
                     Selected_Panels[0] = PanelsW[0];
                     Selected_Panels[1] = PanelsW[1];
                     Selected_Panels[2] = PanelsW[2];
+                    Selected_Panels[3] = PanelsW[3];
                     is_selected = true;
                     break;
                 default:
                     Selected_Panels[0] = PanelsC[0];
                     Selected_Panels[1] = PanelsC[1];
                     Selected_Panels[2] = PanelsC[2];
+                    Selected_Panels[3] = PanelsC[3];
                     break;
             }
 
@@ -144,7 +151,7 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
             {
                 Panels[current_panel].SetActive(false);
                 current_panel = 0;
-                total_panels_selected = 3;
+                total_panels_selected = 4;
                 Selected_Panels[0].SetActive(true);
 
                 character_selection.SetActive(false);
