@@ -36,6 +36,9 @@ public class ballcontroller : MonoBehaviour
     public Animator animator;
     private BounceAudio feedback;
     private AudioSource music;
+    [SerializeField] private AudioSource go;
+    private Animator goMessage;
+    private bool levelStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +64,8 @@ public class ballcontroller : MonoBehaviour
         feedback = gameObject.GetComponent<BounceAudio>();
         music = GameObject.Find("MusicTemp").GetComponent<AudioSource>();
         music.Stop();
+        goMessage = GameObject.Find("Message").GetComponent<Animator>();
+        levelStarted = false;
     }
 
     void Update()
@@ -116,6 +121,11 @@ public class ballcontroller : MonoBehaviour
         float horizontalMotion = Input.GetAxisRaw("Horizontal");
         float bounce = 0;
         if (Input.GetKey("space") || Input.GetMouseButton(0)){
+            if (!go.isPlaying && !levelStarted && movementEnabled){
+                go.Play();
+                goMessage.SetBool("Start", true);
+            }
+            levelStarted = true;
             stopwatch.StartStopwatch();
             if (!music.isPlaying){
                 music.Play();
@@ -174,6 +184,11 @@ public class ballcontroller : MonoBehaviour
                 playerBody.velocity = Vector3.SmoothDamp(playerBody.velocity, new Vector3(0, playerBody.velocity.y, playerBody.velocity.z), ref velocityRef, StopTime); // reference ends here
             }
             if (forwardMotion != 0 || horizontalMotion != 0){
+                if (!go.isPlaying && !levelStarted && movementEnabled){
+                    go.Play();
+                    goMessage.SetBool("Start", true);
+                }
+                levelStarted = true;
                 if (!music.isPlaying){
                     music.Play();
                 }

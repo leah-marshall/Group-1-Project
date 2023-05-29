@@ -4,13 +4,15 @@ using TMPro;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Stopwatch : MonoBehaviour // referenced this video for stopwatch script https://www.youtube.com/watch?v=HLz_k6DSQvU&ab_channel=CocoCode
 {
-    private TMP_Text timeText;
-    bool stopwatchActive;
+    [HideInInspector] public TMP_Text timeText;
+    public bool stopwatchActive;
     private float currentTime;
     private loadingScreen loadManager;
+    [SerializeField] private GameObject resultsScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +58,25 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
 
      public void nextScene(){
         Physics.gravity = new Vector3(0, -30f, 0);
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        loadManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        if(SceneManager.GetActiveScene().buildIndex != 6){
+            loadManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        } else {
+            resultsScreen.SetActive(true);
+            TMP_Text level1Text = GameObject.Find("Level1Text").GetComponent<TMP_Text>();
+            TMP_Text level2Text = GameObject.Find("Level2Text").GetComponent<TMP_Text>();
+            TMP_Text level3Text = GameObject.Find("Level3Text").GetComponent<TMP_Text>();
+            StartCoroutine(results(level1Text, level2Text, level3Text));
+        }
+    }
+
+    IEnumerator results(TMP_Text _level1Text, TMP_Text _level2Text, TMP_Text _level3Text){
+        yield return new WaitForSeconds(1f);
+        _level1Text.text += Goal.level1Time;
+        yield return new WaitForSeconds(1f);
+        _level2Text.text += Goal.level2Time;
+        yield return new WaitForSeconds(1f);
+        _level3Text.text += Goal.level3Time;
     }
 }

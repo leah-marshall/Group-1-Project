@@ -6,12 +6,25 @@ public class SelectCharacter : MonoBehaviour
 {
     public ComicManagerWithCharacterSelection comic_manager;
     private GameObject character_selection;
+    private AudioSource feedbackSound;
 
     private void Start()
     {
         comic_manager = GameObject.Find("Render Comic").GetComponent<ComicManagerWithCharacterSelection>();
         character_selection = this.gameObject;
+        feedbackSound = GameObject.Find("BounceSound").GetComponent<AudioSource>();
     }
+
+    public void playSound(){
+        if(!feedbackSound.isPlaying){
+            feedbackSound.Play();
+        }
+    }
+
+     public void stopSound(){
+            feedbackSound.Stop();
+    }
+
     public void cat()
     {
      //   animalStore.animal = 0;
@@ -74,6 +87,7 @@ public class SelectCharacter : MonoBehaviour
         comic_manager.current_panel = 0;
         comic_manager.total_panels_selected = 4;
         comic_manager.Selected_Panels[0].SetActive(true);
+        stopSound();
     }
 
 }

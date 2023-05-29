@@ -68,6 +68,7 @@ public class ComicManager : MonoBehaviour
         else
         {
             Debug.Log(SceneManager.GetActiveScene().buildIndex + 1);
+            Physics.gravity = new Vector3(0, -30f, 0);
             loadManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         }
     }
