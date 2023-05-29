@@ -9,6 +9,7 @@ public class ComicManager : MonoBehaviour
     [SerializeField] GameObject[] Panels;
     [SerializeField] GameObject All_Panels;
     private int total_panels = 0;
+    private loadingScreen loadManager;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,7 @@ public class ComicManager : MonoBehaviour
 
         current_panel = 0;
         Panels[0].SetActive(true);
+        loadManager = GameObject.Find("LoadingManager").GetComponent<loadingScreen>();
     }
 
     // Update is called once per frame
@@ -66,7 +68,7 @@ public class ComicManager : MonoBehaviour
         else
         {
             Debug.Log(SceneManager.GetActiveScene().buildIndex + 1);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            loadManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         }
     }
 }

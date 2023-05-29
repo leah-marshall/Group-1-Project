@@ -32,7 +32,7 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
     private int BIRD = 3;
     private int BEAR = 4;
     private int WHALE = 5;
-
+    private loadingScreen loadManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +67,7 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
 
         current_panel = 0;
         Panels[0].SetActive(true);
+        loadManager = GameObject.Find("LoadingManager").GetComponent<loadingScreen>();
         updateCharacterPanel();
     }
 
@@ -226,7 +227,7 @@ public class ComicManagerWithCharacterSelection : MonoBehaviour
         }
         else
         {
-           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+           loadManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         }
     }
 }

@@ -10,6 +10,7 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
     private TMP_Text timeText;
     bool stopwatchActive;
     private float currentTime;
+    private loadingScreen loadManager;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
         timeText = gameObject.GetComponent<TMP_Text>();
         stopwatchActive = false;
         currentTime = 0;
+        loadManager = GameObject.Find("LoadingManager").GetComponent<loadingScreen>();
     }
 
     // Update is called once per frame
@@ -55,6 +57,6 @@ public class Stopwatch : MonoBehaviour // referenced this video for stopwatch sc
      public void nextScene(){
         Physics.gravity = new Vector3(0, -30f, 0);
         Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        loadManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     }
 }
