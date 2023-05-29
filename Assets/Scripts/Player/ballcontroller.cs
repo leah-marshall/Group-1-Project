@@ -33,7 +33,7 @@ public class ballcontroller : MonoBehaviour
     private Material PostProcessMat;
     private float indexFloat = 0;
     private float colourSplit = 0;
-    private Animator animator;
+    public Animator animator;
     private BounceAudio feedback;
     private AudioSource music;
 
@@ -58,7 +58,6 @@ public class ballcontroller : MonoBehaviour
         movementEnabled = true;
         pause_menu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
         PostProcessMat = TPCam.GetComponent<PostProcessingScript>().PostProcess;
-        animator = gameObject.transform.GetChild(gameObject.transform.childCount - 1).GetComponent<Animator>();
         feedback = gameObject.GetComponent<BounceAudio>();
         music = GameObject.Find("MusicTemp").GetComponent<AudioSource>();
         music.Stop();
